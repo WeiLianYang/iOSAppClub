@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  iOSAppDemo
 //
-//  Created by 杨陈 on 2021/11/28.
+//  Created by WilliamYang on 2021/11/28.
 //
 
 import UIKit
@@ -16,12 +16,14 @@ class ViewController: UIViewController {
         addNormalUILabel()
         
         addSpecialUILabel()
+        
+        addUiButton()
     }
     
     // 添加简单的 UILabel
     func addNormalUILabel() {
         // 创建 UILabel 控件
-        let label = UILabel(frame: CGRect(x: 0, y: 100, width: 375, height: 130))
+        let label = UILabel(frame: CGRect(x: 0, y: 30, width: 375, height: 130))
         // UILabel 设置文本
         label.text = "自定义简单的便签控件：设置长文本，字体加粗，字号22，颜色为蓝色，阴影为橙色，位置偏移参数为2，文字对齐模式居左，显示行数为5行"
         // UILabel 设置字体，字号22，加粗
@@ -43,7 +45,7 @@ class ViewController: UIViewController {
     
     // 添加个性化的 UILabel
     func addSpecialUILabel() {
-        let label = UILabel(frame: CGRect(x: 15, y: 200, width: 375, height: 200))
+        let label = UILabel(frame: CGRect(x: 15, y: 180, width: 375, height: 60))
         // UILabel 设置默认字体，字号12，加粗
         label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 0
@@ -74,6 +76,49 @@ class ViewController: UIViewController {
         label.attributedText = attStr
         
         self.view.addSubview(label)
+    }
+    
+    /**
+     * 添加 UIButton
+     */
+    func addUiButton() {
+        
+        let uiButton = UIButton(type: UIButton.ButtonType.system)
+        // UIButton 设置位置
+        uiButton.frame = CGRect(x: 10, y: 280, width: 360, height: 100)
+        // UIButton 设置颜色
+        uiButton.backgroundColor = UIColor.cyan
+        // UIButton 设置标题
+        uiButton.setTitle("UIButton title", for: .normal)
+        // UIButton 设置标题文字颜色
+        uiButton.setTitleColor(UIColor.black, for: .normal)
+        
+        // UIButton 添加点击事件
+        uiButton.addTarget(self, action: #selector(touchUpInside), for: .touchUpInside)
+        // 添加 UIButton 到视图上
+        self.view.addSubview(uiButton)
+        
+        let uiButton2 = UIButton(type: UIButton.ButtonType.custom)
+        uiButton2.frame = CGRect(x: 10, y: 400, width: 360, height: 100)
+        uiButton2.backgroundColor = UIColor.cyan
+        uiButton2.setTitle("Content Image", for: .normal)
+        uiButton2.setTitleColor(UIColor.black, for: .normal)
+        // UIButton 设置内容图片
+        uiButton2.setImage(UIImage(named: "demo"), for: .normal)
+        self.view.addSubview(uiButton2)
+        
+        let uiButton3 = UIButton(type: UIButton.ButtonType.custom)
+        uiButton3.frame = CGRect(x: 10, y: 520, width: 360, height: 100)
+        uiButton3.backgroundColor = UIColor.cyan
+        uiButton3.setTitle("Background Image", for: .normal)
+        uiButton3.setTitleColor(UIColor.black, for: .normal)
+        // UIButton 设置背景图片
+        uiButton3.setBackgroundImage(UIImage(named: "demo"), for: .normal)
+        self.view.addSubview(uiButton3)
+    }
+    
+    @objc func touchUpInside() {
+        print("按钮被按下，并且在控件区域内抬起")
     }
 
 }
