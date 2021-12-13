@@ -18,6 +18,10 @@ class ViewController: UIViewController {
         addSpecialUILabel()
         
         addUiButton()
+        
+        addUIImageView1()
+        
+        addUIImageView2()
     }
     
     // 添加简单的 UILabel
@@ -120,6 +124,38 @@ class ViewController: UIViewController {
     @objc func touchUpInside() {
         print("按钮被按下，并且在控件区域内抬起")
     }
-
+    
+    // 添加 UIImageView
+    func addUIImageView1() {
+        let uiImage = UIImage(named: "demo")
+        let size = uiImage?.size
+        print(size?.width.description as Any, size?.height.description as Any)
+        
+        let imageView = UIImageView(image: uiImage)
+        // 设置 UIImageView 的尺寸和位置
+        imageView.frame = CGRect(x: 30, y: 640, width: 100, height: 100)
+        self.view.addSubview(imageView)
+    }
+    
+    // 添加 UIImageView，播放帧动画
+    func addUIImageView2() {
+        var imageArray = Array<UIImage>()
+        for index in 1...15 {
+            let uiImage = UIImage(named: "shark\(index)")
+            imageArray.append(uiImage!)
+        }
+       
+        let imageView = UIImageView(frame: CGRect(x: 150, y: 640, width: 100, height: 100))
+        // 设置 UIImageView 的动画图片数组
+        imageView.animationImages = imageArray
+        // 设置 UIImageView 动画播放时长
+        imageView.animationDuration = 3
+        // 设置 UIImageView 动画播放次数，0 代表无限循环播放
+        imageView.animationRepeatCount = 0
+        self.view.addSubview(imageView)
+        
+        imageView.startAnimating()
+    }
+    
 }
 
