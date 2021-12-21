@@ -40,6 +40,10 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         addUIPageControlView()
         
         addUISegmentedControlView()
+        
+        addUISliderView1()
+        
+        addUISliderView2()
     }
     
     func addUIScrollView() {
@@ -365,13 +369,8 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         scrollView.addSubview(segmentedControl)
     }
     
-    var insertCart = false
-    var insertMine = false
-    var insertClear = false
-    var clearAll = false
-    
-    var updateImage = false
-    var updateTitle = false
+    var insertCart = false, insertMine = false, insertClear = false
+    var clearAll = false, updateImage = false, updateTitle = false
     
     @objc func selectChange(sc: UISegmentedControl) {
         // 选中状态会消失
@@ -414,6 +413,45 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
             clearAll = true
         }
         
+    }
+    
+    func addUISliderView1() {
+        // 创建 UISlider
+        let slider = UISlider(frame: CGRect(x: 25, y: 750, width: 340, height: 30))
+        // 设置 UISlider 的最大值
+        slider.maximumValue = 100
+        // 设置 UISlider 的最小值
+        slider.minimumValue = 0
+        // 设置 UISlider 初始值
+        slider.value = 30
+        // 设置 UISlider 滑块左侧进度条的颜色
+        slider.minimumTrackTintColor = UIColor.green
+        // 设置 UISlider 滑块右侧进度条的颜色
+        slider.maximumTrackTintColor = UIColor.gray
+        // 设置 UISlider 滑块颜色
+        slider.thumbTintColor = UIColor.red
+        
+        scrollView.addSubview(slider)
+    }
+    
+    func addUISliderView2() {
+        // 创建 UISlider
+        let slider = UISlider(frame: CGRect(x: 25, y: 780, width: 340, height: 30))
+        // 设置 UISlider 的最大值
+        slider.maximumValue = 100
+        // 设置 UISlider 的最小值
+        slider.minimumValue = 0
+        // 设置 UISlider 初始值
+        slider.value = 30
+        
+        // 设置 UISlider 滑块图片
+        slider.setThumbImage(UIImage(named: "portrait"), for: UIControl.State.normal)
+        // 设置 UISlider 滑块左侧进度图片
+        slider.setMinimumTrackImage(UIImage(named: "left-progress"), for: UIControl.State.normal)
+        // 设置 UISlider 滑块右侧进度图片
+        slider.setMaximumTrackImage(UIImage(named: "right-progress"), for: UIControl.State.normal)
+        
+        scrollView.addSubview(slider)
     }
     
 }
