@@ -7,11 +7,17 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextViewDelegate {
+class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate {
+    
+    lazy var scrollView: UIScrollView = UIScrollView(frame: self.view.frame)
+    
+    lazy var imageView = UIImageView(image: UIImage(named: "tower"))
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        addUIScrollView()
         
         addNormalUILabel()
         
@@ -23,6 +29,8 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         addUIImageView2()
         
+//        addZoomUIImageView()
+        
         addUITextField()
         
         addUISwitchView1()
@@ -32,6 +40,42 @@ class ViewController: UIViewController, UITextViewDelegate {
         addUIPageControlView()
         
         addUISegmentedControlView()
+    }
+    
+    func addUIScrollView() {
+        // 设置 UIScrollView 的代理为当前视图控制器本身
+        scrollView.delegate = self
+
+        // 设置 UIScrollView 的背景色
+        scrollView.backgroundColor = UIColor.white
+        // 设置 UIScrollView 的内容尺寸
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 1.5)
+//        scrollView.contentSize = self.view.frame.size
+        
+        // 设置 UIScrollView 始终开启竖直方向的回弹效果
+        scrollView.alwaysBounceVertical = true
+        // 设置 UIScrollView 始终开启水平方向的回弹效果
+        scrollView.alwaysBounceHorizontal = true
+        
+        // 设置 UIScrollView 显示竖直方向的滚动条
+        scrollView.showsVerticalScrollIndicator = true
+        // 设置 UIScrollView 显示水平方向的滚动条
+        scrollView.showsHorizontalScrollIndicator = true
+        
+        // 设置 UIScrollView 自动定位分页效果
+        scrollView.isPagingEnabled = true
+        
+        // 设置 UIScrollView 最小缩放比例
+        scrollView.minimumZoomScale = 0.8
+        // 设置 UIScrollView 最大缩放比例
+        scrollView.maximumZoomScale = 1.6
+        
+        // 添加 UIScrollView
+        self.view.addSubview(scrollView)
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
     }
     
     // 添加简单的 UILabel
@@ -54,7 +98,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         label.numberOfLines = 4
         
         // 添加控件到视图上
-        self.view.addSubview(label)
+        scrollView.addSubview(label)
     }
     
     // 添加个性化的 UILabel
@@ -89,7 +133,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         // 设置可变文本
         label.attributedText = attStr
         
-        self.view.addSubview(label)
+        scrollView.addSubview(label)
     }
     
     /**
@@ -110,7 +154,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         // UIButton 添加点击事件
         uiButton.addTarget(self, action: #selector(touchUpInside), for: .touchUpInside)
         // 添加 UIButton 到视图上
-        self.view.addSubview(uiButton)
+        scrollView.addSubview(uiButton)
         
         let uiButton2 = UIButton(type: UIButton.ButtonType.custom)
         uiButton2.frame = CGRect(x: 10, y: 280, width: 360, height: 80)
@@ -119,7 +163,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         uiButton2.setTitleColor(UIColor.black, for: .normal)
         // UIButton 设置内容图片
         uiButton2.setImage(UIImage(named: "demo"), for: .normal)
-        self.view.addSubview(uiButton2)
+        scrollView.addSubview(uiButton2)
         
         let uiButton3 = UIButton(type: UIButton.ButtonType.custom)
         uiButton3.frame = CGRect(x: 10, y: 370, width: 360, height: 80)
@@ -128,7 +172,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         uiButton3.setTitleColor(UIColor.black, for: .normal)
         // UIButton 设置背景图片
         uiButton3.setBackgroundImage(UIImage(named: "demo"), for: .normal)
-        self.view.addSubview(uiButton3)
+        scrollView.addSubview(uiButton3)
     }
     
     @objc func touchUpInside() {
@@ -144,7 +188,13 @@ class ViewController: UIViewController, UITextViewDelegate {
         let imageView = UIImageView(image: uiImage)
         // 设置 UIImageView 的尺寸和位置
         imageView.frame = CGRect(x: 30, y: 460, width: 80, height: 80)
-        self.view.addSubview(imageView)
+        scrollView.addSubview(imageView)
+    }
+    
+    // 添加缩放 UIImageView
+    func addZoomUIImageView() {
+        imageView.frame = self.view.frame
+        scrollView.addSubview(imageView)
     }
     
     // 添加 UIImageView，播放帧动画
@@ -162,7 +212,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         imageView.animationDuration = 3
         // 设置 UIImageView 动画播放次数，0 代表无限循环播放
         imageView.animationRepeatCount = 0
-        self.view.addSubview(imageView)
+        scrollView.addSubview(imageView)
         
         imageView.startAnimating()
     }
@@ -199,7 +249,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         // 设置 UITextField 的代理为当前视图控制器
 //        textField.delegate = self as UITextViewDelegate
         
-        self.view.addSubview(textField)
+        scrollView.addSubview(textField)
     }
     
 //    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -225,7 +275,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         // 监听 UISwitch 开关状态变化
         si.addTarget(self, action: #selector(change), for: UIControl.Event.valueChanged)
         
-        self.view.addSubview(si)
+        scrollView.addSubview(si)
     }
     
     @objc func change(si: UISwitch) {
@@ -247,7 +297,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         si.isOn = false
         // 设置 UISwitch 开关样式
         si.preferredStyle = UISwitch.Style.sliding
-        self.view.addSubview(si)
+        scrollView.addSubview(si)
     }
     
     func addUISwitchView3() {
@@ -265,7 +315,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         si.isOn = true
         // 设置 UISwitch 开关样式
         si.preferredStyle = UISwitch.Style.checkbox
-        self.view.addSubview(si)
+        scrollView.addSubview(si)
     }
     
     func addUIPageControlView() {
@@ -284,7 +334,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         pageControl.addTarget(self, action: #selector(pageChange), for: UIControl.Event.valueChanged)
         
-        self.view.addSubview(pageControl)
+        scrollView.addSubview(pageControl)
     }
     
     @objc func pageChange(pc: UIPageControl) {
@@ -312,7 +362,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         // 监听 UISegmentedControl 事件
         segmentedControl.addTarget(self, action: #selector(selectChange), for: UIControl.Event.valueChanged)
         
-        self.view.addSubview(segmentedControl)
+        scrollView.addSubview(segmentedControl)
     }
     
     var insertCart = false
