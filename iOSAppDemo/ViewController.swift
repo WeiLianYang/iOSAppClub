@@ -431,7 +431,14 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         // 设置 UISlider 滑块颜色
         slider.thumbTintColor = UIColor.red
         
+        // 监听 UISlider 滑块变化的值
+        slider.addTarget(self, action: #selector(changeSlider), for: UIControl.Event.valueChanged)
+        
         scrollView.addSubview(slider)
+    }
+    
+    @objc func changeSlider(slider: UISlider) {
+        print("UISlider value: \(slider.value)")
     }
     
     func addUISliderView2() {
@@ -450,6 +457,11 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         slider.setMinimumTrackImage(UIImage(named: "left-progress"), for: UIControl.State.normal)
         // 设置 UISlider 滑块右侧进度图片
         slider.setMaximumTrackImage(UIImage(named: "right-progress"), for: UIControl.State.normal)
+        
+        // 监听 UISlider 滑块变化的值
+        slider.addTarget(self, action: #selector(changeSlider), for: UIControl.Event.valueChanged)
+        // 设置 UISlider 连续回调监听事件（滑动结束后回调）
+        slider.isContinuous = false
         
         scrollView.addSubview(slider)
     }
