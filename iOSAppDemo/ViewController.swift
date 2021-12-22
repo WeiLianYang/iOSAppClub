@@ -44,6 +44,10 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         addUISliderView1()
         
         addUISliderView2()
+        
+        addUIActivityIndicatorView()
+        
+        addUIProgressView()
     }
     
     func addUIScrollView() {
@@ -67,7 +71,7 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         scrollView.showsHorizontalScrollIndicator = true
         
         // 设置 UIScrollView 自动定位分页效果
-        scrollView.isPagingEnabled = true
+        scrollView.isPagingEnabled = false
         
         // 设置 UIScrollView 最小缩放比例
         scrollView.minimumZoomScale = 0.8
@@ -465,6 +469,68 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         
         scrollView.addSubview(slider)
     }
+    
+    // 活动指示器控件
+    func addUIActivityIndicatorView() {
+        // 创建 UIActivityIndicatorView
+        let activity1 = UIActivityIndicatorView(style: .medium)
+        // 设置 UIActivityIndicatorView 的位置
+        activity1.center = self.view.center
+        // 开始播放动画效果
+        activity1.startAnimating()
+        self.view.addSubview(activity1)
+        
+        let activity2 = UIActivityIndicatorView(style: .large)
+        // 设置 UIActivityIndicatorView 的颜色
+        activity2.color = UIColor.red
+        activity2.center = scrollView.center
+        // 开始播放动画效果
+        activity2.startAnimating()
+        scrollView.addSubview(activity2)
+    }
+    
+    // 进度条控件
+    func addUIProgressView() {
+        // 创建 UIProgressView
+        let progress1 = UIProgressView(progressViewStyle: UIProgressView.Style.default)
+        // 设置 UIProgressView 的位置
+        progress1.frame = CGRect(x: 25, y: 820, width: 340, height: 20)
+        // 设置 UIProgressView 的进度 [0,1]
+        progress1.progress = 0.3
+        // 设置 UIProgressView 的已走过进度的进度条颜色
+        progress1.progressTintColor = UIColor.green
+        // 设置 UIProgressView 的未走过进度的进度条颜色
+        progress1.trackTintColor = UIColor.gray
+        
+        scrollView.addSubview(progress1)
+        
+        // 创建 UIProgressView
+        let progress2 = UIProgressView(progressViewStyle: UIProgressView.Style.default)
+        // 设置 UIProgressView 的位置
+        progress2.frame = CGRect(x: 25, y: 840, width: 340, height: 20)
+        // 设置 UIProgressView 的进度 [0,1]
+        progress2.progress = 0.5
+        // 设置 UIProgressView 的已走过进度的进度条图片
+        progress2.progressImage = UIImage(named: "left-progress")
+        // 设置 UIProgressView 的未走过进度的进度条图片
+        progress2.trackImage = UIImage(named: "right-progress")
+        
+        scrollView.addSubview(progress2)
+        
+        // 创建 UIProgressView
+        let progress3 = UIProgressView(progressViewStyle: UIProgressView.Style.bar)
+        // 设置 UIProgressView 的位置
+        progress3.frame = CGRect(x: 25, y: 860, width: 340, height: 20)
+        // 设置 UIProgressView 的进度 [0,1]
+        progress3.progress = 0.85
+        // 设置 UIProgressView 的已走过进度的进度条颜色
+        progress3.progressTintColor = UIColor.green
+        // 设置 UIProgressView 的未走过进度的进度条颜色
+        progress3.trackTintColor = UIColor.gray
+        
+        scrollView.addSubview(progress3)
+    }
+    
     
 }
 
