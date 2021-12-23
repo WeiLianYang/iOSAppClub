@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate {
+class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     lazy var scrollView: UIScrollView = UIScrollView(frame: self.view.frame)
     
@@ -50,6 +50,8 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         addUIProgressView()
         
         addUIStepperView()
+        
+        addUIPickerView()
     }
     
     func addUIScrollView() {
@@ -588,6 +590,103 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         print("stepper value: \(stepper.value)")
     }
     
+    // 添加选择器控件
+    func addUIPickerView() {
+        // 创建 UIPickerView
+        let pickerView = UIPickerView(frame: CGRect(x: 15, y: 900, width: 350, height: 150))
+        // 设置 UIPickerView 代理
+        pickerView.delegate = self
+        // 设置 UIPickerView 数据源
+        pickerView.dataSource = self
+        
+        // 打印 UIPickerView 的组数
+        print("numberOfComponents: \(pickerView.numberOfComponents)")
+        // 打印 UIPickerView 的指定组的行数
+        print("numberOfRows: \(pickerView.numberOfRows(inComponent: 0))")
+        // 打印 UIPickerView 的指定组的行尺寸
+        print("rowSize: \(pickerView.rowSize(forComponent: 1))")
+        // 获取 UIPickerView 的指定组，指定行的自定义视图
+//        let view = pickerView.view(forRow: 1, forComponent: 0)
+        // 重新加载 UIPickerView 全部分组数据
+        pickerView.reloadAllComponents()
+        // 重新加载 UIPickerView 指定分组数据
+        pickerView.reloadComponent(1)
+        // 获取指定组选中的行
+        print("selectedRow: \(pickerView.selectedRow(inComponent: 1))")
+        // 主动选中 指定组的指定行，带动画效果
+        pickerView.selectRow(1, inComponent: 2, animated: true)
+        
+        scrollView.addSubview(pickerView)
+    }
+    
+    lazy var provine = ["湖北省", "湖南省", "广东省", "江苏省", "浙江省", "山东省"]
+    lazy var city =    ["武汉市", "长沙市", "广州市", "南京市", "杭州市", "济南市"]
+    lazy var area =    ["武昌区", "番禺区", "白云区", "荔湾区", "天河区", "越秀区"]
+    
+    // 返回选择器每个分组的行数
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return provine.count
+    }
+    
+    // 返回选择器分组数
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 3
+    }
+    
+    // 返回选择器每个分组中每行数据的标题
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        print("第\(component + 1)组，第\(row + 1)行")
+        if (component == 0) {
+            return provine[row]
+        } else if (component == 1) {
+            return city[row]
+        } else {
+            return area[row]
+        }
+    }
+    
+    // 设置可变字符串
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        var title: String
+        if (component == 0) {
+            title = provine[row]
+        } else if (component == 1) {
+            title = city[row]
+        } else {
+            title = area[row]
+        }
+        let attStr = NSMutableAttributedString(string: title)
+        attStr.addAttributes([NSAttributedString.Key.foregroundColor: UIColor.purple], range: NSRange(location: 0, length: attStr.length))
+        return attStr
+    }
+    
+    // 设置图片内容视图
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let view = UIImageView(image: UIImage(named: "demo"))
+        view.frame = CGRect(x: 0, y: 0, width: 100, height: 30)
+        return view
+    }
+    
+    // UIPickerView 选中事件监听
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("选择了第\(component + 1)组，第\(row + 1)行")
+    }
+    
+    // 设置 UIPickerView 每个组的宽度
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        if (component == 0) {
+            return 120
+        } else if (component == 1) {
+            return 100
+        } else {
+            return 50
+        }
+    }
+    
+    // 设置 UIPickerView 每组每行的高度
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 50
+    }
     
 }
 
