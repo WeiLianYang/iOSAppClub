@@ -48,6 +48,8 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         addUIActivityIndicatorView()
         
         addUIProgressView()
+        
+        addUIStepperView()
     }
     
     func addUIScrollView() {
@@ -529,6 +531,61 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         progress3.trackTintColor = UIColor.gray
         
         scrollView.addSubview(progress3)
+    }
+    
+    // 添加步进器控件
+    func addUIStepperView() {
+        // 创建 UIStepper
+        let stepper = UIStepper(frame: CGRect(x: 25, y: 880, width: 0, height: 0))
+        // 设置 UIStepper 颜色
+        stepper.tintColor = UIColor.red
+        // 设置 UIStepper 最小值
+        stepper.minimumValue = 1
+        // 设置 UIStepper 最大值
+        stepper.maximumValue = 10
+        // 设置 UIStepper 步长
+        stepper.stepValue = 1
+        
+        // 设置 UIStepper 是否连续触发事件
+        stepper.isContinuous = true
+        // 设置 UIStepper 值自动叠加
+        stepper.autorepeat = false
+        // 设置 UIStepper 值是否循环
+        stepper.wraps = true
+        
+        // 设置 UIStepper 交互事件
+        stepper.addTarget(self, action:#selector(stepperChange), for: UIControl.Event.valueChanged)
+        
+        scrollView.addSubview(stepper)
+        
+        // 创建 UIStepper
+        let stepper2 = UIStepper(frame: CGRect(x: 150, y: 880, width: 0, height: 0))
+        // 设置 UIStepper 颜色
+        stepper2.tintColor = UIColor.red
+        // 设置 UIStepper 最小值
+        stepper2.minimumValue = 1
+        // 设置 UIStepper 最大值
+        stepper2.maximumValue = 10
+        // 设置 UIStepper 步长
+        stepper2.stepValue = 1
+        
+        // 设置 UIStepper 背景图片
+//        stepper2.setBackgroundImage(UIImage(named: "rectangle"), for: UIControl.State.normal)
+        // 设置 UIStepper 分割线图片
+        stepper2.setDividerImage(UIImage(named: "divider"), forLeftSegmentState: UIControl.State.normal, rightSegmentState: UIControl.State.normal)
+        // 设置 UIStepper 增加按钮图片
+        stepper2.setIncrementImage(UIImage(named: "plus"), for: UIControl.State.normal)
+        // 设置 UIStepper 减少按钮图片
+        stepper2.setDecrementImage(UIImage(named: "minus"), for: UIControl.State.normal)
+        
+        // 设置 UIStepper 交互事件
+        stepper2.addTarget(self, action:#selector(stepperChange), for: UIControl.Event.valueChanged)
+        
+        scrollView.addSubview(stepper2)
+    }
+    
+    @objc func stepperChange(stepper: UIStepper) {
+        print("stepper value: \(stepper.value)")
     }
     
     
