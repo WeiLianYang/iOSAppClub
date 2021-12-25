@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UISearchBarDelegate {
     
     lazy var scrollView: UIScrollView = UIScrollView(frame: self.view.frame)
     
@@ -52,6 +52,10 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         addUIStepperView()
         
         addUIPickerView()
+        
+        addUIDatePicker()
+        
+        addUISearchBar()
     }
     
     func addUIScrollView() {
@@ -61,7 +65,7 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         // 设置 UIScrollView 的背景色
         scrollView.backgroundColor = UIColor.white
         // 设置 UIScrollView 的内容尺寸
-        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 1.5)
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 2)
 //        scrollView.contentSize = self.view.frame.size
         
         // 设置 UIScrollView 始终开启竖直方向的回弹效果
@@ -686,6 +690,144 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
     // 设置 UIPickerView 每组每行的高度
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 50
+    }
+    
+    // 添加时间选择器 UIDatePicker
+    func addUIDatePicker() {
+        // 创建 UIDatePicker
+        let picker1 = UIDatePicker(frame: CGRect(x: 15, y: 1050, width: 350, height: 150))
+        // 设置 UIDatePicker 模式
+        picker1.datePickerMode = UIDatePicker.Mode.countDownTimer // 计时器模式
+        // 设置 UIDatePicker 在计时模式下显示的时间差
+        picker1.countDownDuration = TimeInterval(1 * 1000)
+        // 设置 UIDatePicker 在计时模式下相邻时间的时间间隔
+        picker1.minuteInterval = 10 // 每间隔 10 分钟
+        
+        picker1.addTarget(self, action: #selector(changeDatePicker), for: UIControl.Event.valueChanged)
+        
+        
+        let picker2 = UIDatePicker(frame: CGRect(x: 15, y: 1250, width: 350, height: 50))
+        picker2.datePickerMode = UIDatePicker.Mode.date // 日期模式
+        // 设置 UIDatePicker 显示的最小日期
+        picker2.minimumDate = Date(timeIntervalSince1970: TimeInterval(662659200)) // 1991-01-01
+        // 设置 UIDatePicker 显示的最大日期
+        picker2.maximumDate = Date(timeIntervalSince1970: TimeInterval(1640880000)) // 2021-12-31
+        
+        let picker3 = UIDatePicker(frame: CGRect(x: 15, y: 1300, width: 350, height: 50))
+        picker3.datePickerMode = UIDatePicker.Mode.time // 时间模式
+        
+        let picker4 = UIDatePicker(frame: CGRect(x: 15, y: 1350, width: 350, height: 50))
+        picker4.datePickerMode = UIDatePicker.Mode.dateAndTime // 日期时间模式
+        // 设置 UIDatePicker 地区，不设置则默认当前地区
+        picker4.locale = Locale.current
+        // 设置 UIDatePicker 时区，不设置则默认当前时区
+        picker4.timeZone = TimeZone.current
+        // 设置 UIDatePicker 选中的日期
+        picker4.date = Date(timeIntervalSince1970: TimeInterval(1640390400)) // 2021-12-25 08:00:00
+        
+        picker4.addTarget(self, action: #selector(changeDatePicker), for: UIControl.Event.valueChanged)
+        
+        scrollView.addSubview(picker1)
+        scrollView.addSubview(picker2)
+        scrollView.addSubview(picker3)
+        scrollView.addSubview(picker4)
+        
+    }
+    
+    @objc func changeDatePicker(picker: UIDatePicker) {
+        print("选中的时间：\(picker.date)，\(picker.countDownDuration)")
+    }
+    
+    // 添加搜索栏 UISearchBar
+    func addUISearchBar() {
+        // 创建 UISearchBar
+        let searchBar = UISearchBar(frame: CGRect(x: 15, y: 1400, width: 350, height: 150))
+        // 设置 UISearchBar 风格
+        searchBar.searchBarStyle = UISearchBar.Style.minimal // 极简风格
+        // 设置 UISearchBar 风格颜色
+        searchBar.barTintColor = UIColor.cyan
+        // 设置 UISearchBar 背景图片
+//        searchBar.backgroundImage = UIImage(named: "demo")
+        // 设置 UISearchBar 提示文字
+        searchBar.placeholder = "请输入关键字"
+        // 设置 UISearchBar 标题
+        searchBar.prompt = "搜索框控件标题"
+        // 显示 UISearchBar 右侧取消按钮
+        searchBar.showsCancelButton = true
+        // 显示 UISearchBar 书库按钮
+        searchBar.showsBookmarkButton = true
+        // 显示 UISearchBar 搜索结果按钮
+        searchBar.showsSearchResultsButton = false
+        
+        // 设置 UISearchBar 显示附件视图
+        searchBar.showsScopeBar = true
+        // 设置 UISearchBar 附件视图的标题
+        searchBar.scopeButtonTitles = ["综合", "销量", "价格", "筛选"]
+        // 设置 UISearchBar 附件视图默认选中的索引
+        searchBar.selectedScopeButtonIndex = 1
+        
+        // 设置协议实例
+        searchBar.delegate = self
+        
+        scrollView.addSubview(searchBar)
+    }
+    
+    // 搜索栏将要开始编辑时回调，返回 true 允许进入编辑态，否则不允许
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        print("searchBarShouldBeginEditing")
+        return true
+    }
+    
+    // 搜索栏已经开始编辑时回调
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print("searchBarTextDidBeginEditing")
+    }
+    
+    // 搜索栏将要结束编辑时回调，返回 true 允许结束编辑态，否则不允许
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        print("searchBarShouldEndEditing")
+        return true
+    }
+    
+    // 搜索栏已经结束编辑时回调
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print("searchBarTextDidEndEditing")
+    }
+    
+    // 搜索栏的文本发生变化时回调。非常重要
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("searchBar, searchText: \(searchText)")
+    }
+    
+    // 搜索栏的文本将要发生变化时回调，返回 false 则此次修改无效
+    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        print("searchBar, replacementText: \(text)")
+        return true
+    }
+    
+    // 点击键盘上的搜索按钮时回调
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("searchBarSearchButtonClicked")
+    }
+    
+    // 点击搜索栏的书库按钮时回调
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        print("searchBarBookmarkButtonClicked")
+    }
+    
+    // 点击搜索栏的取消按钮时回调
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("searchBarCancelButtonClicked")
+    }
+    
+    // 点击搜索栏的搜索结果按钮时回调
+    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
+        print("searchBarResultsListButtonClicked")
+    }
+    
+    // 点击搜索栏的附件视图上的选项按钮时回调
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        print("searchBar, selectedScopeButtonIndexDidChange: \(selectedScope)")
     }
     
 }
