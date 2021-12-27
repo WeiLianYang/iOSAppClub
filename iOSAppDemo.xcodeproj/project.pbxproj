@@ -16,6 +16,8 @@
 		68CD99FB2753A20700BF5EE7 /* iOSAppDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CD99FA2753A20700BF5EE7 /* iOSAppDemoTests.swift */; };
 		68CD9A052753A20700BF5EE7 /* iOSAppDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CD9A042753A20700BF5EE7 /* iOSAppDemoUITests.swift */; };
 		68CD9A072753A20700BF5EE7 /* iOSAppDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CD9A062753A20700BF5EE7 /* iOSAppDemoUITestsLaunchTests.swift */; };
+		68E1BF842779EDF2002A5ADA /* UILabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E1BF832779EDF2002A5ADA /* UILabelViewController.swift */; };
+		68E1BF86277A0078002A5ADA /* LifecycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E1BF85277A0078002A5ADA /* LifecycleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		68CD9A002753A20700BF5EE7 /* iOSAppDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSAppDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68CD9A042753A20700BF5EE7 /* iOSAppDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppDemoUITests.swift; sourceTree = "<group>"; };
 		68CD9A062753A20700BF5EE7 /* iOSAppDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		68E1BF832779EDF2002A5ADA /* UILabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelViewController.swift; sourceTree = "<group>"; };
+		68E1BF85277A0078002A5ADA /* LifecycleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifecycleViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 		68CD99E22753A20500BF5EE7 /* iOSAppDemo */ = {
 			isa = PBXGroup;
 			children = (
+				68E1BF85277A0078002A5ADA /* LifecycleViewController.swift */,
+				68E1BF832779EDF2002A5ADA /* UILabelViewController.swift */,
 				68CD99E32753A20500BF5EE7 /* AppDelegate.swift */,
 				68CD99E52753A20500BF5EE7 /* SceneDelegate.swift */,
 				68CD99E72753A20500BF5EE7 /* ViewController.swift */,
@@ -261,6 +267,8 @@
 				68CD99E82753A20500BF5EE7 /* ViewController.swift in Sources */,
 				68CD99E42753A20500BF5EE7 /* AppDelegate.swift in Sources */,
 				68CD99E62753A20500BF5EE7 /* SceneDelegate.swift in Sources */,
+				68E1BF842779EDF2002A5ADA /* UILabelViewController.swift in Sources */,
+				68E1BF86277A0078002A5ADA /* LifecycleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -179,6 +179,7 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         uiButton2.setTitleColor(UIColor.black, for: .normal)
         // UIButton 设置内容图片
         uiButton2.setImage(UIImage(named: "demo"), for: .normal)
+        uiButton2.addTarget(self, action: #selector(intoLifecyclePage), for: .touchUpInside)
         scrollView.addSubview(uiButton2)
         
         let uiButton3 = UIButton(type: UIButton.ButtonType.custom)
@@ -193,6 +194,20 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
     
     @objc func touchUpInside() {
         print("按钮被按下，并且在控件区域内抬起")
+        
+        let viewController = UILabelViewController(data: "从上一个界面传过来的文本")
+//        viewController.data = "从上一个界面传过来的文本"
+        self.present(viewController, animated: true) {
+            print("present complete")
+        }
+    }
+    
+    @objc func intoLifecyclePage() {
+        let viewController = LifecycleViewController()
+        viewController.data = "测试 UIViewController 生命周期"
+        self.present(viewController, animated: true) {
+            print("present LifecycleViewController complete")
+        }
     }
     
     // 添加 UIImageView
