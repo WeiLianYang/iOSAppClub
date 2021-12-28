@@ -2,7 +2,7 @@
 //  LifecycleViewController.swift
 //  iOSAppDemo
 //
-//  Created by 杨陈 on 2021/12/27.
+//  Created by WilliamYang on 2021/12/27.
 //
 
 import UIKit

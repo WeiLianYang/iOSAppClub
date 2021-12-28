@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UISearchBarDelegate {
+class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UISearchBarDelegate, CallbackProtocol {
     
     lazy var scrollView: UIScrollView = UIScrollView(frame: self.view.frame)
     
@@ -196,10 +196,23 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         print("按钮被按下，并且在控件区域内抬起")
         
         let viewController = UILabelViewController(data: "从上一个界面传过来的文本")
+        
+        // 设置协议回调接口
+        viewController.delegate = self
+        
+        // 设置闭包
+        viewController.callback = {(data: String) in
+            print("返回的内容：", data) // 返回的内容： 利用闭包回传值
+        }
+        
 //        viewController.data = "从上一个界面传过来的文本"
         self.present(viewController, animated: true) {
             print("present complete")
         }
+    }
+    
+    func callback(data: String) {
+        print("返回的内容：", data) // 返回的内容： 利用协议回传值
     }
     
     @objc func intoLifecyclePage() {

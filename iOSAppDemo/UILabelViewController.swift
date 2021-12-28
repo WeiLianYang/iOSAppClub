@@ -2,12 +2,22 @@
 //  UILabelViewController.swift
 //  iOSAppDemo
 //
-//  Created by 杨陈 on 2021/12/27.
+//  Created by WilliamYang on 2021/12/27.
 //
 
 import UIKit
 
+// 定义协议，回调给上一个控制器
+protocol CallbackProtocol {
+    func callback(data: String)
+}
+
 class UILabelViewController: UIViewController {
+    
+    var delegate: CallbackProtocol?
+    
+    // 定义闭包，回调给上一个控制器
+    var callback: ((String) -> Void)?
     
     var data: String? = nil
     
@@ -41,6 +51,12 @@ class UILabelViewController: UIViewController {
     }
     
     @objc func goBack() {
+        // 1. 利用协议回调
+        delegate?.callback(data: "利用协议回传值")
+        
+        // 2. 利用闭包回调
+        self.callback!("利用闭包回传值")
+        
         self.dismiss(animated: true) {
             print("go back complete")
         }
