@@ -33,7 +33,7 @@ class LifecycleViewController: UIViewController {
     
     func addUIButton() {
         let button = UIButton(type: UIButton.ButtonType.system)
-        button.frame = CGRect(x: 10, y: 20, width: 100, height: 40)
+        button.frame = CGRect(x: 10, y: 100, width: 100, height: 40)
         button.backgroundColor = UIColor.cyan
         button.setTitle("返回按钮", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)

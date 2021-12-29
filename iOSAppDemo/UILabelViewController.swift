@@ -42,7 +42,7 @@ class UILabelViewController: UIViewController {
     
     func addUIButton() {
         let button = UIButton(type: UIButton.ButtonType.system)
-        button.frame = CGRect(x: 10, y: 20, width: 100, height: 40)
+        button.frame = CGRect(x: 10, y: 80, width: 100, height: 40)
         button.backgroundColor = UIColor.cyan
         button.setTitle("返回按钮", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
@@ -55,7 +55,7 @@ class UILabelViewController: UIViewController {
         delegate?.callback(data: "利用协议回传值")
         
         // 2. 利用闭包回调
-        self.callback!("利用闭包回传值")
+        self.callback?("利用闭包回传值")
         
         self.dismiss(animated: true) {
             print("go back complete")
