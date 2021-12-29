@@ -17,6 +17,10 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        self.title = "控件列表视图"
+        
+        initNavigationBar()
+        
         addUIScrollView()
         
         addNormalUILabel()
@@ -56,6 +60,16 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         addUIDatePicker()
         
         addUISearchBar()
+    }
+    
+    func initNavigationBar() {
+        let item = UIBarButtonItem(title: "Pop", style: UIBarButtonItem.Style.plain, target: self, action: #selector(popViewController))
+        self.navigationItem.rightBarButtonItem = item
+    }
+    
+    @objc func popViewController() {
+        print("pop ViewController")
+        self.navigationController?.popViewController(animated: true)
     }
     
     func addUIScrollView() {
