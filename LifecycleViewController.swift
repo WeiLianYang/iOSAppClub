@@ -15,6 +15,16 @@ class LifecycleViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
+        self.tabBarItem.title = "我的"
+        
+        // 设置选中和未选中的图标
+        self.tabBarItem.selectedImage = UIImage(named: "portrait")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        self.tabBarItem.image = UIImage(named: "clear")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        
+        // 设置角标颜色及数字
+        self.tabBarItem.badgeColor = UIColor.red
+        self.tabBarItem.badgeValue = "99+"
+                
         addUIButton()
         
         addUILabel()

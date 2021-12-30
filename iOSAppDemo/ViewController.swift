@@ -17,7 +17,9 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        self.title = "控件列表视图"
+        self.title = "首页"
+        self.tabBarItem.image = UIImage(named: "plus")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        self.tabBarItem.selectedImage = UIImage(named: "minus")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         
         initNavigationBar()
         

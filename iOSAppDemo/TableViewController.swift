@@ -13,10 +13,11 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-//         self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.view.backgroundColor = UIColor.white
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         self.navigationController?.navigationBar.barTintColor = UIColor.cyan
         let barItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(click))

@@ -33,7 +33,10 @@ class UILabelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tabBarItem.title = "推荐"
         self.view.backgroundColor = UIColor.white
+        
+        self.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarItem.SystemItem.search, tag: 1)
 
         addUIButton()
         
