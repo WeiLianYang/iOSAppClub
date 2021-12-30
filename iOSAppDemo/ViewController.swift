@@ -62,6 +62,8 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         addUIDatePicker()
         
         addUISearchBar()
+        
+        testUIAlertController()
     }
     
     func initNavigationBar() {
@@ -872,6 +874,125 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
     // 点击搜索栏的附件视图上的选项按钮时回调
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         print("searchBar, selectedScopeButtonIndexDidChange: \(selectedScope)")
+    }
+    
+    func testUIAlertController() {
+        let uiButton = UIButton(type: UIButton.ButtonType.system)
+        uiButton.frame = CGRect(x: 20, y: 1560, width: 70, height: 30)
+        uiButton.backgroundColor = UIColor.cyan
+        uiButton.setTitle("弹出框-1", for: .normal)
+        uiButton.setTitleColor(UIColor.black, for: .normal)
+        uiButton.addTarget(self, action: #selector(popAlert1), for: .touchUpInside)
+        scrollView.addSubview(uiButton)
+        
+        let button2 = UIButton(type: UIButton.ButtonType.system)
+        button2.frame = CGRect(x: 110, y: 1560, width: 70, height: 30)
+        button2.backgroundColor = UIColor.blue
+        button2.setTitle("弹出框-2", for: .normal)
+        button2.setTitleColor(UIColor.white, for: .normal)
+        button2.addTarget(self, action: #selector(popAlert2), for: .touchUpInside)
+        scrollView.addSubview(button2)
+        
+        let button3 = UIButton(type: UIButton.ButtonType.system)
+        button3.frame = CGRect(x: 200, y: 1560, width: 70, height: 30)
+        button3.backgroundColor = UIColor.brown
+        button3.setTitle("弹出框-3", for: .normal)
+        button3.setTitleColor(UIColor.white, for: .normal)
+        button3.addTarget(self, action: #selector(popAlert3), for: .touchUpInside)
+        scrollView.addSubview(button3)
+        
+        let button4 = UIButton(type: UIButton.ButtonType.system)
+        button4.frame = CGRect(x: 290, y: 1560, width: 80, height: 30)
+        button4.backgroundColor = UIColor.gray
+        button4.setTitle("弹出框-4", for: .normal)
+        button4.setTitleColor(UIColor.black, for: .normal)
+        button4.addTarget(self, action: #selector(popAlert4), for: .touchUpInside)
+        scrollView.addSubview(button4)
+    }
+    
+    @objc func popAlert1() {
+        let alert = UIAlertController(title: "温馨提示", message: "使用本功能需要授予相关权限", preferredStyle: UIAlertController.Style.alert)
+        let action1 = UIAlertAction(title: "确定", style: UIAlertAction.Style.default) { (action) in
+            print("用户点击了 确定 按钮")
+        }
+        let action2 = UIAlertAction(title: "取消", style: UIAlertAction.Style.cancel) { (action) in
+            print("用户点击了 取消 按钮")
+        }
+        // 按钮未超出3个，会横向排列
+        alert.addAction(action1)
+        alert.addAction(action2)
+        
+        self.present(alert, animated: true) {
+            print("弹出了提示框-1")
+        }
+    }
+    
+    @objc func popAlert2() {
+        let alert = UIAlertController(title: "安全提示", message: "当前应用有泄露您私人数据的风险，请联系开发者或删除应用", preferredStyle: UIAlertController.Style.alert)
+        let action1 = UIAlertAction(title: "删除它", style: UIAlertAction.Style.default) { (action) in
+            print("用户点击了 删除它 按钮")
+        }
+        let action2 = UIAlertAction(title: "继续使用", style: UIAlertAction.Style.cancel) { (action) in
+            print("用户点击了 继续使用 按钮")
+        }
+        let action3 = UIAlertAction(title: "爱咋咋滴", style: UIAlertAction.Style.destructive) { (action) in
+            print("用户点击了 爱咋咋滴 按钮")
+        }
+        // 按钮超出了3个，会纵向排列
+        alert.addAction(action1)
+        alert.addAction(action2)
+        alert.addAction(action3)
+        
+        self.present(alert, animated: true) {
+            print("弹出了提示框-2")
+        }
+    }
+    
+    @objc func popAlert3() {
+        let alert = UIAlertController(title: "用户验证", message: "请输入用户名和密码", preferredStyle: UIAlertController.Style.alert)
+        let action1 = UIAlertAction(title: "登录", style: UIAlertAction.Style.default) { (action) in
+            print("用户点击了 登录 按钮")
+        }
+        let action2 = UIAlertAction(title: "取消", style: UIAlertAction.Style.cancel) { (action) in
+            print("用户点击了 取消 按钮")
+        }
+        alert.addAction(action1)
+        alert.addAction(action2)
+        
+        alert.addTextField { (textField) in
+            // 在闭包中对 textField 配置
+            textField.placeholder = "请输入用户名"
+        }
+        
+        alert.addTextField { (textField) in
+            // 在闭包中对 textField 配置
+            textField.placeholder = "请输入密码"
+            textField.isSecureTextEntry = true // 密码模式
+        }
+        
+        self.present(alert, animated: true) {
+            print("弹出了提示框-3")
+        }
+    }
+    
+    @objc func popAlert4() {
+        let alert = UIAlertController(title: "更换头像", message: "请选择头像来源", preferredStyle: UIAlertController.Style.actionSheet)
+        let action1 = UIAlertAction(title: "相册", style: UIAlertAction.Style.default) { (action) in
+            print("用户点击了 相册 按钮")
+        }
+        let action2 = UIAlertAction(title: "相机", style: UIAlertAction.Style.default) { (action) in
+            print("用户点击了 相机 按钮")
+        }
+        let action3 = UIAlertAction(title: "取消", style: UIAlertAction.Style.cancel) { (action) in
+            print("用户点击了 取消 按钮")
+        }
+        alert.addAction(action1)
+        alert.addAction(action2)
+        alert.addAction(action3)
+        
+        self.present(alert, animated: true) {
+            print("弹出了提示框-4")
+        }
     }
     
 }
