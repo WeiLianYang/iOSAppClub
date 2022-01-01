@@ -22,6 +22,9 @@ class TableViewController: UITableViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.cyan
         let barItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(click))
         self.navigationItem.leftBarButtonItem = barItem
+        
+        self.title = "Navigation"
+        self.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarItem.SystemItem.bookmarks, tag: 1)
     }
     
     @objc func click(bar: UIBarButtonItem) {
