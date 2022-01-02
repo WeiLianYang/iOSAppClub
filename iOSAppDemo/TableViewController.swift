@@ -30,7 +30,7 @@ class TableViewController: UITableViewController {
     @objc func click(bar: UIBarButtonItem) {
         print("UIBarButtonItem click")
         
-        let viewController = ViewController()
+        let viewController = WebViewController()
         // 入栈
         self.navigationController?.pushViewController(viewController, animated: true)
     }
