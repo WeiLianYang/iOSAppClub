@@ -18,11 +18,16 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let barItem = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(dismissPage))
+        self.navigationItem.leftBarButtonItem = barItem
+        
+        self.title = "UIWebView Demo"
+        
         // 创建 WebView
         webView = UIWebView(frame: CGRect(x: 0, y: 0, width: Int(self.view.frame.size.width), height: Int(self.view.frame.size.height) - toolHeight))
         
         // 创建 url
-        let url = URL(string: "http://www.baidu.com")
+        let url = URL(string: "https://github.com/WeiLianYang")
         // 创建 url 请求
         let request = URLRequest(url: url!)
         
@@ -34,10 +39,11 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         
         // 创建自定义导航条
         let toolView = UIView(frame: CGRect(x: 0, y: Int(self.view.frame.size.height) - toolHeight, width: Int(self.view.frame.size.width), height: toolHeight))
+        toolView.backgroundColor = UIColor.white
         self.view.addSubview(toolView)
         
         // 创建后退按钮
-        btnGoBack = UIButton(frame: CGRect(x: 20, y: 0, width: toolWidth, height: toolHeight))
+        btnGoBack = UIButton(frame: CGRect(x: 0, y: 0, width: toolWidth, height: toolHeight))
         btnGoBack.backgroundColor = UIColor.cyan
         btnGoBack.setTitle("Back", for: .normal)
         btnGoBack.setTitleColor(UIColor.black, for: .normal)
@@ -45,13 +51,25 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         toolView.addSubview(btnGoBack)
         
         // 创建前进按钮
-        btnGoForward = UIButton(frame: CGRect(x: Int(self.view.frame.size.width) - 120, y: 0, width: toolWidth, height: toolHeight))
+        btnGoForward = UIButton(frame: CGRect(x: Int(self.view.frame.size.width) - toolWidth, y: 0, width: toolWidth, height: toolHeight))
         btnGoForward.backgroundColor = UIColor.cyan
         btnGoForward.setTitle("Forward", for: .normal)
         btnGoForward.setTitleColor(UIColor.black, for: .normal)
         btnGoForward.addTarget(self, action: #selector(goForward), for: .touchUpInside)
         toolView.addSubview(btnGoForward)
         
+        // 创建跳转按钮
+        let btnGoWk = UIButton(frame: CGRect(x: 120, y: 0, width: toolWidth + 40, height: toolHeight))
+        btnGoWk.backgroundColor = UIColor.cyan
+        btnGoWk.setTitle("WKWebView", for: .normal)
+        btnGoWk.setTitleColor(UIColor.black, for: .normal)
+        btnGoWk.addTarget(self, action: #selector(goWKWebView), for: .touchUpInside)
+        toolView.addSubview(btnGoWk)
+        
+    }
+    
+    @objc func dismissPage() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func goBack() {
@@ -60,6 +78,11 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     
     @objc func goForward() {
         webView?.goForward()
+    }
+    
+    @objc func goWKWebView() {
+        let viewController = WKWebViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     // 视图将要开始加载时回调，返回 false 则禁止此次加载
