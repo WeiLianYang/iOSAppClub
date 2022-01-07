@@ -10,12 +10,13 @@ import UIKit
 class TableViewController: UITableViewController {
     
     // 初始化数据源
-    var groupData: Array<String> = ["group-1", "group-2"]
-    var dataArray: Array<String> = ["row-1", "row-2", "row-3", "row-4", "row-5"]
+    var groupData: Array<String> = ["group-1"]//, "group-2"]
+//    var dataArray: Array<String> = ["row-1", "row-2", "row-3", "row-4", "row-5"]
+    lazy var dataArray: Array<TableCellData> = [TableCellData(), TableCellData(), TableCellData(), TableCellData()]
     
     var heightForHeader = 35
     var heightForFooter = 25
-    var heightForCell = 45
+    var heightForCell = 100
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +37,17 @@ class TableViewController: UITableViewController {
         
         
         // 创建 UITableView，设置扁平化风格
-        tableView = UITableView(frame: self.view.frame, style: UITableView.Style.grouped)
+        tableView = UITableView(frame: self.view.frame, style: UITableView.Style.plain)
         // 注册 cell
-        tableView.register(NSClassFromString("UITableViewCell"), forCellReuseIdentifier: "TableViewCellId")
+        tableView.register(NSClassFromString("UITableViewCell"), forCellReuseIdentifier: "cell")
+//        tableView.register(UINib.init(nibName: "DefaultTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         
         // 设置数据源与代理
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // 开启编辑模式
+//        tableView.isEditing = true
         
     }
     
@@ -70,9 +75,14 @@ class TableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCellId", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         // 设置每个 cell 的数据
-        cell.textLabel?.text = dataArray[indexPath.row]
+        let data = dataArray[indexPath.row]
+    
+        cell.textLabel?.text = data.title
+        cell.detailTextLabel?.text = data.subTitle
+        cell.imageView?.image = UIImage(named: data.imageName)
+
         return cell
     }
     
@@ -165,6 +175,53 @@ class TableViewController: UITableViewController {
         
     }
     
+    // 返回每行 cell 的编辑模式
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if indexPath.row == 0 {
+            return .insert
+        } else {
+            return .delete
+        }
+        
+    }
+    
+    // 设置显示的交互按钮的文字
+    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        if indexPath.row == 0 {
+            return "insert"
+        } else {
+            return "delete"
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            print("click delete button")
+            // 删除数据源中的数据
+            dataArray.remove(at: indexPath.row)
+            // 删除 cell
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.left)
+        } else {
+            print("click insert button")
+            
+            let item = TableCellData()
+            // 插入数据源
+            dataArray.insert(item, at: indexPath.row)
+            // 插入 cell
+            tableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+        }
+    }
+    
+    // 对数据排序
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        print("sourceIndexPath.row: ", sourceIndexPath.row, "destinationIndexPath.row: ", destinationIndexPath.row)
+        
+        let temp1 = dataArray[sourceIndexPath.row]
+        let temp2 = dataArray[destinationIndexPath.row]
+        
+        dataArray[sourceIndexPath.row] = temp2
+        dataArray[destinationIndexPath.row] = temp1
+    }
 
     /*
     // Override to support conditional editing of the table view.
