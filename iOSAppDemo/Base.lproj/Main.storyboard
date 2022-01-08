@@ -11,7 +11,7 @@
         <!--Root View Controller-->
         <scene sceneID="SYa-nV-e3z">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="apH-ks-Jzs" customClass="TableViewController" customModule="iOSAppDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="apH-ks-Jzs" customClass="TableViewController" customModule="iOSAppDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="opN-NJ-t2h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,12 +27,12 @@
             </objects>
             <point key="canvasLocation" x="868" y="706"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="wcD-cC-xp8">
             <objects>
                 <navigationController id="ByR-oC-Q7g" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <tabBarItem key="tabBarItem" title="Item" id="VRc-iZ-P7m"/>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="VRc-iZ-P7m"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fjj-fg-fZ3">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -48,7 +48,7 @@
             </objects>
             <point key="canvasLocation" x="868" y="-10"/>
         </scene>
-        <!--Item 1-->
+        <!--View Controller-->
         <scene sceneID="VgB-IS-Eaa">
             <objects>
                 <viewController id="Kag-lM-2wz" customClass="ViewController" customModule="iOSAppDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -58,23 +58,23 @@
                         <viewLayoutGuide key="safeArea" id="SAC-M7-IeW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="Du4-5o-l3Z"/>
+                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="Du4-5o-l3Z"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDL-ij-zzb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="868" y="-674"/>
         </scene>
-        <!--Item 3-->
+        <!--Collection View Controller-->
         <scene sceneID="aby-Ds-uku">
             <objects>
-                <viewController id="Jjh-Fe-FJs" customClass="UILabelViewController" customModule="iOSAppDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Jjh-Fe-FJs" customClass="CollectionViewController" customModule="iOSAppDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jyq-5T-etE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="sPd-PR-D6r"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 3" id="qOX-UJ-RL0"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="qOX-UJ-RL0"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="voY-Ai-UzL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

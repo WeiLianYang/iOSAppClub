@@ -61,6 +61,7 @@ class TableViewController: UITableViewController {
         print("UIBarButtonItem click")
         
         let viewController = WebViewController()
+        viewController.hidesBottomBarWhenPushed = true
         // 入栈
         self.navigationController?.pushViewController(viewController, animated: true)
     }
