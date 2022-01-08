@@ -17,9 +17,14 @@ class TableCellData: NSObject {
     override init() {
         super.init()
     
-        title = "default title"
-        subTitle = "default sub title"
+        title = "title"
+        subTitle = "sub title"
         imageName = "demo"
+    }
+    
+    init(title: String, imageName: String) {
+        self.title = title
+        self.imageName = imageName
     }
     
     init(title: String, subTitle: String, imageName: String) {

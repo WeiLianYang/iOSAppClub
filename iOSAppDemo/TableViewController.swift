@@ -10,9 +10,11 @@ import UIKit
 class TableViewController: UITableViewController {
     
     // 初始化数据源
-    var groupData: Array<String> = ["group-1"]//, "group-2"]
+//    var groupData: Array<String> = ["group-1"]//, "group-2"]
 //    var dataArray: Array<String> = ["row-1", "row-2", "row-3", "row-4", "row-5"]
-    lazy var dataArray: Array<TableCellData> = [TableCellData(), TableCellData(), TableCellData(), TableCellData()]
+//    lazy var dataArray: Array<TableCellData> = [TableCellData(), TableCellData(), TableCellData(), TableCellData()]
+    lazy var dataArray: Array<TableCellData> = []
+    let groupData = ["#", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     
     var heightForHeader = 35
     var heightForFooter = 25
@@ -35,9 +37,13 @@ class TableViewController: UITableViewController {
         self.title = "Navigation"
         self.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarItem.SystemItem.bookmarks, tag: 1)
         
+        for index in 0...3 {
+            dataArray.append(TableCellData(title: "title-\(index)", imageName: "demo"))
+        }
+        
         
         // 创建 UITableView，设置扁平化风格
-        tableView = UITableView(frame: self.view.frame, style: UITableView.Style.plain)
+        tableView = UITableView(frame: self.view.frame, style: UITableView.Style.grouped)
         // 注册 cell
         tableView.register(NSClassFromString("UITableViewCell"), forCellReuseIdentifier: "cell")
 //        tableView.register(UINib.init(nibName: "DefaultTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
@@ -66,6 +72,11 @@ class TableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return groupData.count
     }
+    
+    // 设置索引栏标题
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return groupData
+    }
 
     // 返回每组的数据量
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,7 +99,12 @@ class TableViewController: UITableViewController {
     
     // 设置分组 头部 标题
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "title for header in section"
+        return groupData[section]
+    }
+    
+    // 将索引栏上的文字与分区进行绑定
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return index
     }
     
     // 设置分组 尾部 标题
@@ -98,16 +114,18 @@ class TableViewController: UITableViewController {
     
     // 设置分组 头部 视图
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: Int(self.view.frame.size.width), height: heightForHeader))
-        view.backgroundColor = UIColor.purple
-        return view
+//        let view = UIView(frame: CGRect(x: 0, y: 0, width: Int(self.view.frame.size.width), height: heightForHeader))
+//        view.backgroundColor = UIColor.purple
+//        return view
+        return nil
     }
     
     // 设置分组 尾部 视图
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: Int(self.view.frame.size.width), height: heightForFooter))
-        view.backgroundColor = UIColor.brown
-        return view
+//        let view = UIView(frame: CGRect(x: 0, y: 0, width: Int(self.view.frame.size.width), height: heightForFooter))
+//        view.backgroundColor = UIColor.brown
+//        return view
+        return nil
     }
     
     // 设置分组 头部 视图高度
