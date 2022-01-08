@@ -9,17 +9,17 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource { // : UICollectionViewController {
+class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource { // : UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // 创建集合视图布局类
-        let layout = UICollectionViewFlowLayout()
+        let layout = WaterFallFlowLayout(itemCount: 50)
         // 设置布局方向为竖直方向
         layout.scrollDirection = .vertical
         // 设置每个数据载体的尺寸
-        layout.itemSize = CGSize(width: 115, height: 115)
+//        layout.itemSize = CGSize(width: 115, height: 115)
         // 设置最小 行间距
         layout.minimumLineSpacing = 10
         // 设置最小列间距
@@ -56,14 +56,16 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
     // MARK: UICollectionViewDataSource
 
     // 返回分组的数量
+    /*
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
+    */
+    
     // 返回每组的数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 12
+        return 50
     }
 
     // 返回 Cell
@@ -71,7 +73,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
         // Configure the cell
-        cell.backgroundColor = UIColor.cyan
+        cell.backgroundColor = UIColor(red: CGFloat(arc4random() % 255) / 255, green: CGFloat(arc4random() % 255) / 255, blue: CGFloat(arc4random() % 255) / 255, alpha: 1)
     
         return cell
     }
@@ -82,6 +84,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
     }
     
     // 设置每个 cell 的尺寸
+    /*
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row % 2 == 0 {
             return CGSize(width: 50, height: 50)
@@ -89,6 +92,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegateFlowLa
             return CGSize(width: 100, height: 100)
         }
     }
+    */
 
     // MARK: UICollectionViewDelegate
 
