@@ -144,17 +144,17 @@
             </objects>
             <point key="canvasLocation" x="3118" y="-10"/>
         </scene>
-        <!--Item 4-->
+        <!--Animation View Controller-->
         <scene sceneID="feN-Ma-ccf">
             <objects>
-                <viewController id="ipN-EN-8CZ" customClass="LifecycleViewController" customModule="iOSAppDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ipN-EN-8CZ" customClass="AnimationViewController" customModule="iOSAppDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U47-PV-uoS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="3k3-zC-sEU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 4" id="lbY-kQ-5h3"/>
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="lbY-kQ-5h3"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u8W-Tv-xdb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

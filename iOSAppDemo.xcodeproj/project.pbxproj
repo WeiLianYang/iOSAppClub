@@ -21,9 +21,11 @@
 		68CD99FB2753A20700BF5EE7 /* iOSAppDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CD99FA2753A20700BF5EE7 /* iOSAppDemoTests.swift */; };
 		68CD9A052753A20700BF5EE7 /* iOSAppDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CD9A042753A20700BF5EE7 /* iOSAppDemoUITests.swift */; };
 		68CD9A072753A20700BF5EE7 /* iOSAppDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CD9A062753A20700BF5EE7 /* iOSAppDemoUITestsLaunchTests.swift */; };
+		68CF8741278B34B60064D73B /* shark.gif in Resources */ = {isa = PBXBuildFile; fileRef = 68CF8740278B34B60064D73B /* shark.gif */; };
 		68D359B9277C91050059257D /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D359B8277C91050059257D /* TableViewController.swift */; };
 		68E1BF842779EDF2002A5ADA /* UILabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E1BF832779EDF2002A5ADA /* UILabelViewController.swift */; };
 		68E1BF86277A0078002A5ADA /* LifecycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E1BF85277A0078002A5ADA /* LifecycleViewController.swift */; };
+		68ED93CE278B0B7600FCA5A9 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ED93CD278B0B7600FCA5A9 /* AnimationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,9 +64,11 @@
 		68CD9A002753A20700BF5EE7 /* iOSAppDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSAppDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68CD9A042753A20700BF5EE7 /* iOSAppDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppDemoUITests.swift; sourceTree = "<group>"; };
 		68CD9A062753A20700BF5EE7 /* iOSAppDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSAppDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		68CF8740278B34B60064D73B /* shark.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = shark.gif; path = ../../../../Downloads/shark.gif; sourceTree = "<group>"; };
 		68D359B8277C91050059257D /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		68E1BF832779EDF2002A5ADA /* UILabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelViewController.swift; sourceTree = "<group>"; };
 		68E1BF85277A0078002A5ADA /* LifecycleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifecycleViewController.swift; sourceTree = SOURCE_ROOT; };
+		68ED93CD278B0B7600FCA5A9 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +119,11 @@
 		68CD99E22753A20500BF5EE7 /* iOSAppDemo */ = {
 			isa = PBXGroup;
 			children = (
+				68ED93CD278B0B7600FCA5A9 /* AnimationViewController.swift */,
 				686B19142789C56F00459A00 /* WaterFallFlowLayout.swift */,
 				68317C062789864F00B016D5 /* CollectionViewController.swift */,
 				681D09CC27872E5A0031F196 /* TableCellData.swift */,
+				68CF8740278B34B60064D73B /* shark.gif */,
 				686DDC542781CFF90092C4F4 /* WKWebViewController.swift */,
 				68C65D232780998700EA61DC /* WebViewController.swift */,
 				68E1BF85277A0078002A5ADA /* LifecycleViewController.swift */,
@@ -257,6 +263,7 @@
 			files = (
 				68CD99F02753A20700BF5EE7 /* LaunchScreen.storyboard in Resources */,
 				68CD99ED2753A20700BF5EE7 /* Assets.xcassets in Resources */,
+				68CF8741278B34B60064D73B /* shark.gif in Resources */,
 				68CD99EB2753A20500BF5EE7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +292,7 @@
 				68CD99E82753A20500BF5EE7 /* ViewController.swift in Sources */,
 				68D359B9277C91050059257D /* TableViewController.swift in Sources */,
 				68CD99E42753A20500BF5EE7 /* AppDelegate.swift in Sources */,
+				68ED93CE278B0B7600FCA5A9 /* AnimationViewController.swift in Sources */,
 				686DDC552781CFF90092C4F4 /* WKWebViewController.swift in Sources */,
 				68317C072789864F00B016D5 /* CollectionViewController.swift in Sources */,
 				68CD99E62753A20500BF5EE7 /* SceneDelegate.swift in Sources */,
