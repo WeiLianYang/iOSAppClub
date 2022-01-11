@@ -10,6 +10,8 @@ import ImageIO
 
 class AnimationViewController: UIViewController {
     
+    lazy var scrollView: UIScrollView = UIScrollView(frame: self.view.frame)
+    
     var animationView1: UIView?
     
     var animationView2: UIView?
@@ -18,26 +20,60 @@ class AnimationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addUIScrollView()
 
         animationView1 = UIView(frame: CGRect(x: 20, y: 30, width: 100, height: 100))
         animationView1?.backgroundColor = UIColor.red
         self.view.addSubview(animationView1!)
         
-        animationView2 = UIView(frame: CGRect(x: 50, y: 250, width: 120, height: 120))
+        animationView2 = UIView(frame: CGRect(x: 230, y: 50, width: 100, height: 100))
         animationView2?.backgroundColor = UIColor.cyan
         self.view.addSubview(animationView2!)
         
-        let imageView = UIImageView(frame: CGRect(x: 20, y: 400, width: gifWH, height: gifWH))
-        self.view.addSubview(imageView)
+        let imageView = UIImageView(frame: CGRect(x: 30, y: 150, width: gifWH, height: gifWH))
+        scrollView.addSubview(imageView)
         
         // 通过 UIImageView 播放 Gif 动画加载速度会更快，但是使用复杂
         loadGifWithImageView(imageView: imageView, name: "shark")
         
-        let webView = UIWebView(frame: CGRect(x: 50 + gifWH, y: 400, width: gifWH, height: gifWH))
-        self.view.addSubview(webView)
+        let webView = UIWebView(frame: CGRect(x: 60 + gifWH, y: 150, width: gifWH, height: gifWH))
+        scrollView.addSubview(webView)
         
         // 通过 UIWebView 播放 Gif 动画加载速度慢，但是动画更流畅
         loadGifWithWebView(webView: webView, name: "shark")
+    }
+    
+    func addUIScrollView() {
+        // 设置 UIScrollView 的代理为当前视图控制器本身
+//        scrollView.delegate = self
+
+        // 设置 UIScrollView 的背景色
+        scrollView.backgroundColor = UIColor.white
+        // 设置 UIScrollView 的内容尺寸
+        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 2)
+//        scrollView.contentSize = self.view.frame.size
+        
+        // 设置 UIScrollView 始终开启竖直方向的回弹效果
+        scrollView.alwaysBounceVertical = true
+        // 设置 UIScrollView 始终开启水平方向的回弹效果
+        scrollView.alwaysBounceHorizontal = true
+        
+        // 设置 UIScrollView 显示竖直方向的滚动条
+        scrollView.showsVerticalScrollIndicator = true
+        // 设置 UIScrollView 显示水平方向的滚动条
+        scrollView.showsHorizontalScrollIndicator = true
+        
+        // 设置 UIScrollView 自动定位分页效果
+        scrollView.isPagingEnabled = false
+        
+        // 设置 UIScrollView 最小缩放比例
+        scrollView.minimumZoomScale = 0.8
+        // 设置 UIScrollView 最大缩放比例
+        scrollView.maximumZoomScale = 1.6
+        
+        // 添加 UIScrollView
+        self.view.addSubview(scrollView)
     }
     
     // 用户点击界面时回调
@@ -48,7 +84,7 @@ class AnimationViewController: UIViewController {
         }) { (finish) in
             // 上一个动画执行完成后继续执行位移动画
             UIView.animate(withDuration: 2, animations: {
-                self.animationView1?.center = CGPoint(x: 200, y: 180)
+                self.animationView1?.center = CGPoint(x: 120, y: 100)
             })
         }
         
@@ -72,10 +108,10 @@ class AnimationViewController: UIViewController {
         }, completion: nil)
         
         // 要变化的目标View
-        let otherView = UIView(frame: CGRect(x: 140, y: 250, width: 120, height: 120))
+        let otherView = UIView(frame: CGRect(x: 220, y: 50, width: 100, height: 100))
         otherView.backgroundColor = UIColor.red
         // 切换视图
-        UIView.transition(from: animationView2!, to: otherView, duration: 3, options: UIView.AnimationOptions.transitionFlipFromRight, completion: nil)
+        UIView.transition(from: animationView2!, to: otherView, duration: 3, options: UIView.AnimationOptions.transitionCurlUp, completion: nil)
         
     }
     
@@ -128,7 +164,7 @@ class AnimationViewController: UIViewController {
             }
             
             // 设置 ImageView 尺寸
-            imageView.frame = CGRect(x: 20, y: 400, width: imgWidth, height: imgHeight)
+            imageView.frame = CGRect(x: 30, y: 150, width: imgWidth, height: imgHeight)
             // 播放动画
             imageView.animationImages = imageArray
             imageView.animationDuration = TimeInterval(time)
