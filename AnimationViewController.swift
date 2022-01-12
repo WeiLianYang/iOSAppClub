@@ -9,9 +9,7 @@ import UIKit
 import ImageIO
 
 class AnimationViewController: UIViewController {
-    
-    lazy var scrollView: UIScrollView = UIScrollView(frame: self.view.frame)
-    
+        
     var animationView1: UIView?
     
     var animationView2: UIView?
@@ -21,59 +19,31 @@ class AnimationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addUIScrollView()
-
         animationView1 = UIView(frame: CGRect(x: 20, y: 30, width: 100, height: 100))
         animationView1?.backgroundColor = UIColor.red
         self.view.addSubview(animationView1!)
         
-        animationView2 = UIView(frame: CGRect(x: 230, y: 50, width: 100, height: 100))
+        animationView2 = UIView(frame: CGRect(x: 230, y: 30, width: 100, height: 100))
         animationView2?.backgroundColor = UIColor.cyan
         self.view.addSubview(animationView2!)
         
         let imageView = UIImageView(frame: CGRect(x: 30, y: 150, width: gifWH, height: gifWH))
-        scrollView.addSubview(imageView)
+        self.view.addSubview(imageView)
         
         // 通过 UIImageView 播放 Gif 动画加载速度会更快，但是使用复杂
         loadGifWithImageView(imageView: imageView, name: "shark")
         
         let webView = UIWebView(frame: CGRect(x: 60 + gifWH, y: 150, width: gifWH, height: gifWH))
-        scrollView.addSubview(webView)
+        self.view.addSubview(webView)
         
         // 通过 UIWebView 播放 Gif 动画加载速度慢，但是动画更流畅
         loadGifWithWebView(webView: webView, name: "shark")
-    }
-    
-    func addUIScrollView() {
-        // 设置 UIScrollView 的代理为当前视图控制器本身
-//        scrollView.delegate = self
-
-        // 设置 UIScrollView 的背景色
-        scrollView.backgroundColor = UIColor.white
-        // 设置 UIScrollView 的内容尺寸
-        scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 2)
-//        scrollView.contentSize = self.view.frame.size
         
-        // 设置 UIScrollView 始终开启竖直方向的回弹效果
-        scrollView.alwaysBounceVertical = true
-        // 设置 UIScrollView 始终开启水平方向的回弹效果
-        scrollView.alwaysBounceHorizontal = true
+        addGradientLayer()
         
-        // 设置 UIScrollView 显示竖直方向的滚动条
-        scrollView.showsVerticalScrollIndicator = true
-        // 设置 UIScrollView 显示水平方向的滚动条
-        scrollView.showsHorizontalScrollIndicator = true
+        addReplicatorLayer()
         
-        // 设置 UIScrollView 自动定位分页效果
-        scrollView.isPagingEnabled = false
-        
-        // 设置 UIScrollView 最小缩放比例
-        scrollView.minimumZoomScale = 0.8
-        // 设置 UIScrollView 最大缩放比例
-        scrollView.maximumZoomScale = 1.6
-        
-        // 添加 UIScrollView
-        self.view.addSubview(scrollView)
+        addShapeLayer()
     }
     
     // 用户点击界面时回调
@@ -84,7 +54,7 @@ class AnimationViewController: UIViewController {
         }) { (finish) in
             // 上一个动画执行完成后继续执行位移动画
             UIView.animate(withDuration: 2, animations: {
-                self.animationView1?.center = CGPoint(x: 120, y: 100)
+                self.animationView1?.center = CGPoint(x: 120, y: 80)
             })
         }
         
@@ -108,7 +78,7 @@ class AnimationViewController: UIViewController {
         }, completion: nil)
         
         // 要变化的目标View
-        let otherView = UIView(frame: CGRect(x: 220, y: 50, width: 100, height: 100))
+        let otherView = UIView(frame: CGRect(x: 220, y: 30, width: 100, height: 100))
         otherView.backgroundColor = UIColor.red
         // 切换视图
         UIView.transition(from: animationView2!, to: otherView, duration: 3, options: UIView.AnimationOptions.transitionCurlUp, completion: nil)
@@ -183,6 +153,112 @@ class AnimationViewController: UIViewController {
         webView.scalesPageToFit = true
         webView.load(imageData, mimeType: "image/gif", textEncodingName: "", baseURL: URL(string: Bundle.main.bundlePath)!)
     }
+    
+    // 添加渐变图层
+    func addGradientLayer() {
+        // 创建渐变图层
+        let layer = CAGradientLayer()
+        // 设置图层尺寸位置
+        layer.bounds = CGRect(x: 0, y: 320, width: 100, height: 100)
+        layer.position = CGPoint(x: 100, y: 370)
+        // 设置色彩渐变的颜色
+        layer.colors = [UIColor.red.cgColor, UIColor.green.cgColor, UIColor.blue.cgColor]
+        // 设置渐变的临界位置
+        layer.locations = [NSNumber(value: 0.2), NSNumber(value: 0.5), NSNumber(value: 0.7)]
+        // 设置渐变的起始点与结束点
+        layer.startPoint = CGPoint(x: 0, y: 0.5)
+        layer.endPoint = CGPoint(x: 1, y: 0.5)
+        
+        self.view.layer.addSublayer(layer)
+        
+        let layer2 = CAGradientLayer()
+        // 设置图层尺寸位置
+        layer2.bounds = CGRect(x: 130, y: 320, width: 100, height: 100)
+        layer2.position = CGPoint(x: 230, y: 370)
+        // 设置色彩渐变的颜色
+        layer2.colors = [UIColor.red.cgColor, UIColor.green.cgColor, UIColor.blue.cgColor]
+        // 设置渐变的临界位置
+        layer2.locations = [NSNumber(value: 0.2), NSNumber(value: 0.5), NSNumber(value: 0.7)]
+        // 设置渐变的起始点与结束点
+        layer2.startPoint = CGPoint(x: 0, y: 0)
+        layer2.endPoint = CGPoint(x: 1, y: 1)
+        
+        self.view.layer.addSublayer(layer2)
+    }
+    
+    // 添加拷贝图层
+    func addReplicatorLayer() {
+        // 创建拷贝图层
+        let layer = CAReplicatorLayer()
+        layer.position = CGPoint.zero
+        // 创建内容图层
+        let subLayer = CALayer()
+        subLayer.bounds = CGRect(x: 0, y: 450, width: 30, height: 30)
+        subLayer.position = CGPoint(x: 30, y: 460)
+        subLayer.backgroundColor = UIColor.black.cgColor
+        layer.addSublayer(subLayer)
+        
+        // 设置每次拷贝将副本沿 x 轴平移20个单位
+        layer.instanceTransform = CATransform3DMakeTranslation(40, 1, 0)
+        // 设置拷贝副本数量
+        layer.instanceCount = 8
+        self.view.layer.addSublayer(layer)
+    }
+    
+    // 添加图形 Layer 层
+    func addShapeLayer() {
+        let layer = CAShapeLayer()
+        layer.position = CGPoint.zero
+        
+        // 创建图形路径
+        let path = CGMutablePath()
+        // 设置路径起点
+        path.move(to: CGPoint(x: 150, y: 490))
+        // 画线
+        path.addLine(to: CGPoint(x: 50, y: 550))
+        path.addLine(to: CGPoint(x: 150, y: 550))
+        path.addLine(to: CGPoint(x: 150, y: 490))
+        
+        // 设置图层路径
+        layer.path = path
+        // 设置图形边缘线条起点和终点
+        layer.strokeStart = 0
+        layer.strokeEnd = 1
+        // 设置填充规则
+        layer.fillRule = CAShapeLayerFillRule.evenOdd
+        // 设置填充颜色
+        layer.fillColor = UIColor.cyan.cgColor
+        // 设置边框颜色
+        layer.strokeColor = UIColor.brown.cgColor
+        // 设置边框宽度
+        layer.lineWidth = 3
+        
+        self.view.layer.addSublayer(layer)
+        
+        
+        let layer2 = CAShapeLayer()
+        layer2.position = CGPoint.zero
+        
+        let path2 = CGMutablePath()
+        path2.move(to: CGPoint(x: 180, y: 490))
+        path2.addLine(to: CGPoint(x: 180, y: 550))
+        path2.addLine(to: CGPoint(x: 280, y: 550))
+        path2.addLine(to: CGPoint(x: 180, y: 490))
+        
+        layer2.path = path2
+        layer2.strokeStart = 0
+        layer2.strokeEnd = 1
+        layer2.fillRule = CAShapeLayerFillRule.nonZero
+        layer2.fillColor = UIColor.brown.cgColor
+        layer2.strokeColor = UIColor.cyan.cgColor
+        layer2.lineWidth = 3
+        
+        self.view.layer.addSublayer(layer2)
+    }
+    
+    
+    
+    
 
     /*
     // MARK: - Navigation
