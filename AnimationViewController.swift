@@ -44,6 +44,7 @@ class AnimationViewController: UIViewController {
         addReplicatorLayer()
         
         addShapeLayer()
+        
     }
     
     // 用户点击界面时回调
@@ -83,6 +84,15 @@ class AnimationViewController: UIViewController {
         // 切换视图
         UIView.transition(from: animationView2!, to: otherView, duration: 3, options: UIView.AnimationOptions.transitionCurlUp, completion: nil)
         
+//        playAnimation1()
+        
+//        playAnimation2()
+        
+        playAnimation3()
+        
+        playAnimation4()
+        
+        playGroupAnimation()
     }
     
     
@@ -256,8 +266,95 @@ class AnimationViewController: UIViewController {
         self.view.layer.addSublayer(layer2)
     }
     
+    func playAnimation1() {
+        // 创建动画实例，声明要进行属性动画的属性路径
+        let basicAni = CABasicAnimation(keyPath: "transform.rotation.z")
+        // 从 0 度开始旋转
+        basicAni.fromValue = 0
+        // 旋转到180度
+        basicAni.toValue = NSNumber(value: Double.pi)
+        // 设置时长
+        basicAni.duration = 2
+        // 将动画作用于指定视图layer层上
+        self.view.layer.add(basicAni, forKey: nil)
+    }
     
+    func playAnimation2() {
+        let keyFrameAni = CAKeyframeAnimation(keyPath: "transform.rotation.z")
+        keyFrameAni.values = [NSNumber(value: 0), NSNumber(value: Double.pi / 4), NSNumber(value: 0), NSNumber(value: Double.pi)]
+        keyFrameAni.duration = 3
+        self.view.layer.add(keyFrameAni, forKey: "")
+    }
     
+    func playAnimation3() {
+        let springAni = CASpringAnimation(keyPath: "position.x")
+        // 模拟质量，必须大于 0，默认为1，影响惯性
+        springAni.mass = 5
+        // 模拟弹簧劲度系数，值越大，回弹越快
+        springAni.stiffness = 5
+        // 设置阻尼系数，值越大，回弹幅度越小
+        springAni.damping = 2
+        springAni.toValue = 280
+        springAni.duration = 2
+        
+        springAni.fillMode = .forwards
+        springAni.isRemovedOnCompletion = false
+        
+        let layer = CALayer()
+        layer.position = CGPoint(x: 80, y: 600)
+        layer.bounds = CGRect(x: 10, y: 580, width: 50, height: 50)
+        layer.backgroundColor = UIColor.green.cgColor
+        self.view.layer.addSublayer(layer)
+        
+        layer.add(springAni, forKey: "")
+        
+//        layer.position.x = 280
+    }
+    
+    func playAnimation4() {
+        // 创建转场动画
+        let transAni = CATransition()
+        // 设置转场动画类型
+        transAni.type = CATransitionType.push
+        // 设置转场动画方向
+        transAni.subtype = CATransitionSubtype.fromRight
+        
+        transAni.fillMode = .forwards
+        transAni.isRemovedOnCompletion = false
+        
+        let layer = CALayer()
+        layer.position = CGPoint(x: 200, y: 625)
+        layer.bounds = CGRect(x: 10, y: 650, width: 50, height: 50)
+        layer.backgroundColor = UIColor.gray.cgColor
+        layer.add(transAni, forKey: "")
+        
+        // 转场动画是在 layer 层出现时产生效果
+        self.view.layer.addSublayer(layer)
+    }
+    
+    func playGroupAnimation() {
+        // 背景色过渡动画
+        let basic1 = CABasicAnimation(keyPath: "backgroundColor")
+        basic1.toValue = UIColor.yellow.cgColor
+        // 缩放动画
+        let basic2 = CABasicAnimation(keyPath: "transform.scale.x")
+        basic2.toValue = NSNumber(value: 2)
+        
+        // 创建组合动画
+        let groupAni = CAAnimationGroup()
+        groupAni.animations = [basic1, basic2]
+        groupAni.duration = 3
+        groupAni.fillMode = .both
+        groupAni.isRemovedOnCompletion = false
+        
+        let layer = CALayer()
+        layer.position = CGPoint(x: 200, y: 625)
+        layer.bounds = CGRect(x: 10, y: 720, width: 50, height: 50)
+        layer.backgroundColor = UIColor.brown.cgColor
+        layer.add(groupAni, forKey: "")
+        
+        self.view.layer.addSublayer(layer)
+    }
     
 
     /*
