@@ -26,6 +26,8 @@
 		68E1BF842779EDF2002A5ADA /* UILabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E1BF832779EDF2002A5ADA /* UILabelViewController.swift */; };
 		68E1BF86277A0078002A5ADA /* LifecycleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E1BF85277A0078002A5ADA /* LifecycleViewController.swift */; };
 		68ED93CE278B0B7600FCA5A9 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ED93CD278B0B7600FCA5A9 /* AnimationViewController.swift */; };
+		68F9778C279064C300CCDE2C /* raindrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F9778B279064C300CCDE2C /* raindrop.png */; };
+		68F9778E279067CC00CCDE2C /* snowflake.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F9778D279067CC00CCDE2C /* snowflake.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		68E1BF832779EDF2002A5ADA /* UILabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelViewController.swift; sourceTree = "<group>"; };
 		68E1BF85277A0078002A5ADA /* LifecycleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifecycleViewController.swift; sourceTree = SOURCE_ROOT; };
 		68ED93CD278B0B7600FCA5A9 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = SOURCE_ROOT; };
+		68F9778B279064C300CCDE2C /* raindrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = raindrop.png; path = ../../../../Downloads/raindrop.png; sourceTree = "<group>"; };
+		68F9778D279067CC00CCDE2C /* snowflake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snowflake.png; path = ../../../../Downloads/snowflake.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 				68CD99E52753A20500BF5EE7 /* SceneDelegate.swift */,
 				68CD99E72753A20500BF5EE7 /* ViewController.swift */,
 				68CD99E92753A20500BF5EE7 /* Main.storyboard */,
+				68F9778D279067CC00CCDE2C /* snowflake.png */,
+				68F9778B279064C300CCDE2C /* raindrop.png */,
 				68CD99EC2753A20700BF5EE7 /* Assets.xcassets */,
 				68CD99EE2753A20700BF5EE7 /* LaunchScreen.storyboard */,
 				68CD99F12753A20700BF5EE7 /* Info.plist */,
@@ -261,7 +267,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68F9778C279064C300CCDE2C /* raindrop.png in Resources */,
 				68CD99F02753A20700BF5EE7 /* LaunchScreen.storyboard in Resources */,
+				68F9778E279067CC00CCDE2C /* snowflake.png in Resources */,
 				68CD99ED2753A20700BF5EE7 /* Assets.xcassets in Resources */,
 				68CF8741278B34B60064D73B /* shark.gif in Resources */,
 				68CD99EB2753A20500BF5EE7 /* Main.storyboard in Resources */,

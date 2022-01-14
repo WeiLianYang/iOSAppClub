@@ -45,6 +45,9 @@ class AnimationViewController: UIViewController {
         
         addShapeLayer()
         
+        addEmitterLayer()
+        
+        addEmitterLayer2()
     }
     
     // 用户点击界面时回调
@@ -354,6 +357,82 @@ class AnimationViewController: UIViewController {
         layer.add(groupAni, forKey: "")
         
         self.view.layer.addSublayer(layer)
+    }
+    
+    // 粒子效果
+    func addEmitterLayer() {
+        // 创建粒子单元
+        let cell = CAEmitterCell()
+        // 设置每秒产生粒子数
+        cell.birthRate = 100
+        // 设置粒子存活时间
+        cell.lifetime = 4
+        // 设置粒子存活时间随机范围
+        cell.lifetimeRange = 2
+        // 设置粒子渲染颜色
+        cell.color = UIColor(red: 0.5, green: 0.9, blue: 0.9, alpha: 0.5).cgColor
+        // 设置粒子内容
+        cell.contents = UIImage(named: "snowflake")?.cgImage
+        // 设置粒子运动速度
+        cell.velocity = 100
+        // 设置粒子运动速度随机范围
+        cell.velocityRange = 50
+        // 设置粒子在 x-y 平面的发射角度
+        cell.emissionLongitude = CGFloat(Double.pi + Double.pi / 2)
+        // 设置粒子发射角度的随机范围
+        cell.emissionRange = CGFloat(Double.pi)
+        // 设置粒子的缩放速率
+        cell.scaleSpeed = 0.5
+        // 设置粒子的旋转
+        cell.spin = 0.3
+        
+        // 配置粒子发射引擎
+        let emitter = CAEmitterLayer()
+        // 设置发射引擎的位置和尺寸
+        emitter.emitterPosition = CGPoint(x: self.view.bounds.size.width / 2, y: self.view.bounds.size.height - 20)
+        emitter.emitterSize = CGSize(width: self.view.bounds.size.width - 100, height: 20)
+        // 粒子的渲染模式
+        emitter.renderMode = .oldestFirst
+        // 设置粒子发射引擎的粒子单元
+        emitter.emitterCells = [cell]
+        
+        self.view.layer.addSublayer(emitter)
+    }
+    
+    // 粒子效果2
+    func addEmitterLayer2() {
+        // 创建粒子单元
+        let cell = CAEmitterCell()
+        // 设置每秒产生粒子数
+        cell.birthRate = 50
+        // 设置粒子存活时间
+        cell.lifetime = 4
+        // 设置粒子存活时间随机范围
+        cell.lifetimeRange = 2
+        // 设置粒子渲染颜色
+//        cell.color = UIColor(red: 0.5, green: 0.9, blue: 0.9, alpha: 0.5).cgColor
+        // 设置粒子内容
+        cell.contents = UIImage(named: "raindrop")?.cgImage
+        // 设置粒子运动速度
+        cell.velocity = 100
+        // 设置粒子运动速度随机范围
+        cell.velocityRange = 50
+        // 设置粒子在 x-y 平面的发射角度
+        cell.emissionLongitude = CGFloat(Double.pi)
+        // 设置粒子发射角度的随机范围
+        cell.emissionRange = CGFloat(Double.pi)
+        
+        // 配置粒子发射引擎
+        let emitter = CAEmitterLayer()
+        // 设置发射引擎的位置和尺寸
+        emitter.emitterPosition = CGPoint(x: self.view.bounds.size.width / 2, y: 40)
+        emitter.emitterSize = CGSize(width: self.view.bounds.size.width, height: 40)
+        // 粒子的渲染模式
+        emitter.renderMode = .unordered
+        // 设置粒子发射引擎的粒子单元
+        emitter.emitterCells = [cell]
+        
+        self.view.layer.addSublayer(emitter)
     }
     
 
