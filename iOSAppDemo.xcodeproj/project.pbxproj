@@ -11,6 +11,7 @@
 		68317C072789864F00B016D5 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68317C062789864F00B016D5 /* CollectionViewController.swift */; };
 		686B19152789C56F00459A00 /* WaterFallFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686B19142789C56F00459A00 /* WaterFallFlowLayout.swift */; };
 		686DDC552781CFF90092C4F4 /* WKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DDC542781CFF90092C4F4 /* WKWebViewController.swift */; };
+		68B77C8D2792ABD8007AA191 /* AutoLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B77C8C2792ABD8007AA191 /* AutoLayoutViewController.swift */; };
 		68C65D242780998700EA61DC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C65D232780998700EA61DC /* WebViewController.swift */; };
 		68CD99E42753A20500BF5EE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CD99E32753A20500BF5EE7 /* AppDelegate.swift */; };
 		68CD99E62753A20500BF5EE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CD99E52753A20500BF5EE7 /* SceneDelegate.swift */; };
@@ -52,6 +53,7 @@
 		68317C062789864F00B016D5 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		686B19142789C56F00459A00 /* WaterFallFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterFallFlowLayout.swift; sourceTree = SOURCE_ROOT; };
 		686DDC542781CFF90092C4F4 /* WKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewController.swift; sourceTree = SOURCE_ROOT; };
+		68B77C8C2792ABD8007AA191 /* AutoLayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutViewController.swift; sourceTree = SOURCE_ROOT; };
 		68C65D232780998700EA61DC /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		68CD99E02753A20500BF5EE7 /* iOSAppDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAppDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68CD99E32753A20500BF5EE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		68CD99E22753A20500BF5EE7 /* iOSAppDemo */ = {
 			isa = PBXGroup;
 			children = (
+				68B77C8C2792ABD8007AA191 /* AutoLayoutViewController.swift */,
 				68ED93CD278B0B7600FCA5A9 /* AnimationViewController.swift */,
 				686B19142789C56F00459A00 /* WaterFallFlowLayout.swift */,
 				68317C062789864F00B016D5 /* CollectionViewController.swift */,
@@ -299,6 +302,7 @@
 			files = (
 				68CD99E82753A20500BF5EE7 /* ViewController.swift in Sources */,
 				68D359B9277C91050059257D /* TableViewController.swift in Sources */,
+				68B77C8D2792ABD8007AA191 /* AutoLayoutViewController.swift in Sources */,
 				68CD99E42753A20500BF5EE7 /* AppDelegate.swift in Sources */,
 				68ED93CE278B0B7600FCA5A9 /* AnimationViewController.swift in Sources */,
 				686DDC552781CFF90092C4F4 /* WKWebViewController.swift in Sources */,

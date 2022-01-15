@@ -80,10 +80,10 @@
             </objects>
             <point key="canvasLocation" x="1585" y="-682"/>
         </scene>
-        <!--View Controller-->
+        <!--Auto Layout View Controller-->
         <scene sceneID="CcU-YG-2TQ">
             <objects>
-                <viewController id="QAm-8W-BkZ" sceneMemberID="viewController">
+                <viewController id="QAm-8W-BkZ" customClass="AutoLayoutViewController" customModule="iOSAppDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vbN-a0-D6o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
