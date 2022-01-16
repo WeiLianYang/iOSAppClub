@@ -6,8 +6,16 @@
 //
 
 import UIKit
+import SnapKit
 
-class AutoLayoutViewController: UIViewController {
+class AutoLayoutViewController: UIViewController, UITextViewDelegate {
+    
+    lazy var view3 = UIView()
+    lazy var view4 = UIView()
+    
+    lazy var textView = UITextView()
+    
+    let contentMaxHeight = CGFloat(80)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,8 +66,83 @@ class AutoLayoutViewController: UIViewController {
         self.view.addConstraints(constraintH)
         self.view.addConstraints(constraintV)
         
+        // 3. 使用 SnapKit
+        
+        view3.backgroundColor = UIColor.red
+        self.view.addSubview(view3)
+        
+        // 设置宽高 50，位置居中
+        view3.snp.makeConstraints { (make) -> Void in
+            make.width.height.equalTo(50)
+            make.center.equalTo(self.view)
+        }
+        
+        view4 = UIView()
+        view4.backgroundColor = UIColor.red
+        self.view.addSubview(view4)
+        
+        // 设置宽高 50，位置居中
+        view4.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(150)
+            make.right.equalTo(-150)
+            make.top.equalTo(240)
+            make.bottom.equalTo(-510)
+        }
+        
+        
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.black.cgColor
+        textView.delegate = self
+        textView.font = UIFont.boldSystemFont(ofSize: 18)
+        self.view.addSubview(textView)
+        
+        textView.snp.makeConstraints { make in
+            make.leading.equalTo(150)
+            make.trailing.equalTo(-150)
+            make.top.equalTo(500)
+            make.height.equalTo(30)
+        }
+        
+       
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // 更新约束
+        view4.snp.updateConstraints { make in
+            make.left.equalTo(100)
+            make.right.equalTo(-100)
+        }
+        
+        // 移除所有约束
+        view3.snp.removeConstraints()
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        print("bounds.size.height: ", textView.bounds.size.height, ", contentSize.height: ", textView.contentSize.height)
+        if textView.bounds.size.height >= contentMaxHeight {
+            if (textView.contentSize.height < textView.bounds.size.height) {
+                // 当视图高度超过了最大高度，且文本高度小于视图高度，则更新约束高度为文本高度。
+                // 会在逐行删除时回调
+                print("case 1")
+                textView.snp.updateConstraints { make in
+                    make.height.equalTo(textView.contentSize.height)
+                }
+            }
+        }
+        if (textView.contentSize.height != textView.bounds.size.height) && textView.bounds.size.height < contentMaxHeight {
+            // 当 文本高度 和 视图高度不一致，且视图高度小于最大高度时，设置约束高度为 文本的高度，并使用动画过渡
+            // 会在持续输入文本内容时回调
+            print("case 2")
+            textView.snp.updateConstraints { make in
+                make.height.equalTo(textView.contentSize.height)
+            }
+            // 布局变化使用动画过渡
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
+        return true
+    }
 
     /*
     // MARK: - Navigation
