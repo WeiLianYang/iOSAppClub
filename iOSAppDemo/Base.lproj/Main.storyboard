@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="2377" y="-682"/>
         </scene>
-        <!--View Controller-->
+        <!--Plist View Controller-->
         <scene sceneID="EsA-vh-Zm7">
             <objects>
-                <viewController id="pA5-3B-s8S" sceneMemberID="viewController">
+                <viewController id="pA5-3B-s8S" customClass="PlistViewController" customModule="iOSAppDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Yp-rj-PhR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="2377" y="-10"/>
         </scene>
-        <!--View Controller-->
+        <!--Http View Controller-->
         <scene sceneID="ox7-dG-J11">
             <objects>
-                <viewController id="j0O-Or-Wue" sceneMemberID="viewController">
+                <viewController id="j0O-Or-Wue" customClass="HttpViewController" customModule="iOSAppDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UdR-4q-yqK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

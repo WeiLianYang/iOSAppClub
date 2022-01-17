@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		681D09CD27872E5A0031F196 /* TableCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681D09CC27872E5A0031F196 /* TableCellData.swift */; };
+		682020122794122C00700E1F /* HttpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682020112794122C00700E1F /* HttpViewController.swift */; };
+		6820201427943DD500700E1F /* PlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6820201327943DD500700E1F /* PlistViewController.swift */; };
+		682020162794473100700E1F /* ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682020152794473100700E1F /* ext.swift */; };
+		68202018279459F800700E1F /* CustomPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68202017279459F800700E1F /* CustomPlist.plist */; };
 		68317C072789864F00B016D5 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68317C062789864F00B016D5 /* CollectionViewController.swift */; };
 		686B19152789C56F00459A00 /* WaterFallFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686B19142789C56F00459A00 /* WaterFallFlowLayout.swift */; };
 		686DDC552781CFF90092C4F4 /* WKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DDC542781CFF90092C4F4 /* WKWebViewController.swift */; };
@@ -53,6 +57,10 @@
 		0D2476AC9918C3DFBA5A7B46 /* Pods-iOSAppDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSAppDemo.debug.xcconfig"; path = "Target Support Files/Pods-iOSAppDemo/Pods-iOSAppDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		2372C06080BFE3238A67C486 /* Pods-iOSAppDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSAppDemo.release.xcconfig"; path = "Target Support Files/Pods-iOSAppDemo/Pods-iOSAppDemo.release.xcconfig"; sourceTree = "<group>"; };
 		681D09CC27872E5A0031F196 /* TableCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellData.swift; sourceTree = SOURCE_ROOT; };
+		682020112794122C00700E1F /* HttpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpViewController.swift; sourceTree = SOURCE_ROOT; };
+		6820201327943DD500700E1F /* PlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistViewController.swift; sourceTree = "<group>"; };
+		682020152794473100700E1F /* ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ext.swift; sourceTree = "<group>"; };
+		68202017279459F800700E1F /* CustomPlist.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CustomPlist.plist; sourceTree = "<group>"; };
 		68317C062789864F00B016D5 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		686B19142789C56F00459A00 /* WaterFallFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterFallFlowLayout.swift; sourceTree = SOURCE_ROOT; };
 		686DDC542781CFF90092C4F4 /* WKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -132,6 +140,7 @@
 		68CD99E22753A20500BF5EE7 /* iOSAppDemo */ = {
 			isa = PBXGroup;
 			children = (
+				682020112794122C00700E1F /* HttpViewController.swift */,
 				68B77C8C2792ABD8007AA191 /* AutoLayoutViewController.swift */,
 				68ED93CD278B0B7600FCA5A9 /* AnimationViewController.swift */,
 				686B19142789C56F00459A00 /* WaterFallFlowLayout.swift */,
@@ -152,6 +161,9 @@
 				68CD99EE2753A20700BF5EE7 /* LaunchScreen.storyboard */,
 				68CD99F12753A20700BF5EE7 /* Info.plist */,
 				68D359B8277C91050059257D /* TableViewController.swift */,
+				6820201327943DD500700E1F /* PlistViewController.swift */,
+				682020152794473100700E1F /* ext.swift */,
+				68202017279459F800700E1F /* CustomPlist.plist */,
 			);
 			path = iOSAppDemo;
 			sourceTree = "<group>";
@@ -300,6 +312,7 @@
 				68CD99F02753A20700BF5EE7 /* LaunchScreen.storyboard in Resources */,
 				68F9778E279067CC00CCDE2C /* snowflake.png in Resources */,
 				68CD99ED2753A20700BF5EE7 /* Assets.xcassets in Resources */,
+				68202018279459F800700E1F /* CustomPlist.plist in Resources */,
 				68CF8741278B34B60064D73B /* shark.gif in Resources */,
 				68CD99EB2753A20500BF5EE7 /* Main.storyboard in Resources */,
 			);
@@ -372,6 +385,9 @@
 				68D359B9277C91050059257D /* TableViewController.swift in Sources */,
 				68B77C8D2792ABD8007AA191 /* AutoLayoutViewController.swift in Sources */,
 				68CD99E42753A20500BF5EE7 /* AppDelegate.swift in Sources */,
+				6820201427943DD500700E1F /* PlistViewController.swift in Sources */,
+				682020162794473100700E1F /* ext.swift in Sources */,
+				682020122794122C00700E1F /* HttpViewController.swift in Sources */,
 				68ED93CE278B0B7600FCA5A9 /* AnimationViewController.swift in Sources */,
 				686DDC552781CFF90092C4F4 /* WKWebViewController.swift in Sources */,
 				68317C072789864F00B016D5 /* CollectionViewController.swift in Sources */,
