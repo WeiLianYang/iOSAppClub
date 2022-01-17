@@ -53,7 +53,7 @@ class PlistViewController: UIViewController {
         button1.backgroundColor = UIColor.cyan
         button1.setTitle("Save", for: .normal)
         button1.setTitleColor(UIColor.black, for: .normal)
-        button1.addTarget(self, action: #selector(saveDataToUserDefaults), for: .touchUpInside)
+        button1.addTarget(self, action: #selector(saveData), for: .touchUpInside)
         scrollView.addSubview(button1)
         
         let button2 = UIButton(type: UIButton.ButtonType.system)
@@ -61,7 +61,7 @@ class PlistViewController: UIViewController {
         button2.backgroundColor = UIColor.cyan
         button2.setTitle("Read", for: .normal)
         button2.setTitleColor(UIColor.black, for: .normal)
-        button2.addTarget(self, action: #selector(readDataFromUserDefaults), for: .touchUpInside)
+        button2.addTarget(self, action: #selector(readData), for: .touchUpInside)
         scrollView.addSubview(button2)
         
         let button3 = UIButton(type: UIButton.ButtonType.system)
@@ -73,7 +73,27 @@ class PlistViewController: UIViewController {
         scrollView.addSubview(button3)
     }
     
-    @objc func saveDataToUserDefaults() {
+    @objc func saveData() {
+        saveDataToUserDefaults()
+        
+        archiveStringData()
+        
+        archiveMutableData()
+        
+        archiveObjectData()
+    }
+    
+    @objc func readData() {
+        readDataFromUserDefaults()
+        
+        unarchiveStringData()
+        
+//        unarchiveMutableData()
+        
+        unarchiveObjectData()
+    }
+    
+    func saveDataToUserDefaults() {
         // 获取应用程序默认的 UserDefaults
         let userDefault = UserDefaults.standard
         // 存储 URL
@@ -99,7 +119,7 @@ class PlistViewController: UIViewController {
     }
     
     
-    @objc func readDataFromUserDefaults() {
+    func readDataFromUserDefaults() {
         // 获取应用程序默认的 UserDefaults
         let userDefault = UserDefaults.standard
         
@@ -154,7 +174,6 @@ class PlistViewController: UIViewController {
         // 获取文件路径
         let path = Bundle.main.path(forResource: "CustomPlist", ofType: "plist")
         let dict = NSDictionary(contentsOfFile: path!)
-        print(dict ?? "dict is nil")
         
         content.append("\n\n custom plist: \(String(describing: dict))")
         textView.text = content
@@ -170,16 +189,109 @@ class PlistViewController: UIViewController {
         
         // 读取 plist
         let dict = NSDictionary(contentsOfFile: fileName)
-        print(dict ?? "dict is nil")
         
         content.append("\n\n custom plist: \(String(describing: dict))")
         textView.text = content
     }
     
-    func archiveData() {
-        
+    // *****************
+    // 对单一数据进行 归档
+    // *****************
+    func archiveStringData() {
+        // 获取根目录
+        let rootPath = NSHomeDirectory()
+        // 创建文件完整路径
+        let filePath = rootPath + "archiver1.file"
+        // 将字符串进行归档，一并写入磁盘
+        NSKeyedArchiver.archiveRootObject("hello william", toFile: filePath)
     }
     
+    // *****************
+    // 对单一数据进行 解归档
+    // *****************
+    func unarchiveStringData() {
+        // 获取根目录
+        let rootPath = NSHomeDirectory()
+        // 创建文件完整路径
+        let filePath = rootPath + "archiver1.file"
+        // 解归档
+        let dataStr = NSKeyedUnarchiver.unarchiveObject(withFile: filePath)
+        print("unarchive string: \(dataStr)")
+    }
+    
+    // *****************
+    // 对多个数据进行 归档
+    // *****************
+    func archiveMutableData() {
+        // 获取根目录
+        let rootPath = NSHomeDirectory()
+        // 创建文件完整路径
+        let filePath = rootPath + "archiver2.file"
+        // 创建归档载体数据
+        let data = NSMutableData()
+        // 创建归档对象
+        let archiver = NSKeyedArchiver(forWritingWith: data)
+        // 存入数据并编码
+        archiver.encode("William", forKey: "name")
+        archiver.encode(18, forKey: "age")
+        archiver.encode("ios developer", forKey: "job")
+        // 完成编码
+        archiver.finishEncoding()
+        // 写入文件
+        data.write(toFile: filePath, atomically: true)
+        
+        print("archive mutable data")
+    }
+    
+    // *****************
+    // 对多个数据进行 解归档
+    // *****************
+    func unarchiveMutableData() {
+        let rootPath = NSHomeDirectory()
+        let filePath = rootPath + "archiver2.file"
+        // 将文件读取成 Data 数据
+        let data = try? Data(contentsOf: URL(fileURLWithPath: filePath))
+        // 创建解归档对象
+        let unarchiver = NSKeyedUnarchiver(forReadingWith: data!)
+        // 解归档数据
+        let name = unarchiver.decodeObject(forKey: "name")
+        let age = unarchiver.decodeInt32(forKey: "age")
+        let job = unarchiver.decodeObject(forKey: "job")
+        
+        print("unarchive mutable data: \(name), \(age), \(job)")
+    }
+    
+    
+    // ******************************
+    //  对 ArchiveData 类进行 归档测试
+    // ******************************
+    func archiveObjectData() {
+        let rootPath = NSHomeDirectory()
+        let filePath = rootPath + "archiver3.file"
+       
+        let instance = ArchiveData()
+        instance.name = "William Yang"
+        instance.age = 18
+        
+        // 归档
+        let data = try? NSKeyedArchiver.archivedData(withRootObject: instance, requiringSecureCoding: false)
+        // 写入文件
+        let result = try? data?.write(to: URL(fileURLWithPath: filePath))
+        
+        print("archive object data: \(result)")
+    }
+    
+    // ******************************
+    //  对 ArchiveData 类进行 解归档
+    // ******************************
+    func unarchiveObjectData() {
+        let rootPath = NSHomeDirectory()
+        let filePath = rootPath + "archiver3.file"
+        
+        // 解归档
+        let demo = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? ArchiveData
+        print("unarchive object data: ", demo?.name, demo?.age)
+    }
     
     /*
     // MARK: - Navigation
