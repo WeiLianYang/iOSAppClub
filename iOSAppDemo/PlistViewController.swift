@@ -88,7 +88,7 @@ class PlistViewController: UIViewController {
         
         unarchiveStringData()
         
-//        unarchiveMutableData()
+        unarchiveMutableData()
         
         unarchiveObjectData()
     }
@@ -201,7 +201,7 @@ class PlistViewController: UIViewController {
         // 获取根目录
         let rootPath = NSHomeDirectory()
         // 创建文件完整路径
-        let filePath = rootPath + "archiver1.file"
+        let filePath = rootPath + "/archiver1.file"
         // 将字符串进行归档，一并写入磁盘
         NSKeyedArchiver.archiveRootObject("hello william", toFile: filePath)
     }
@@ -213,7 +213,7 @@ class PlistViewController: UIViewController {
         // 获取根目录
         let rootPath = NSHomeDirectory()
         // 创建文件完整路径
-        let filePath = rootPath + "archiver1.file"
+        let filePath = rootPath + "/archiver1.file"
         // 解归档
         let dataStr = NSKeyedUnarchiver.unarchiveObject(withFile: filePath)
         print("unarchive string: \(dataStr)")
@@ -226,7 +226,7 @@ class PlistViewController: UIViewController {
         // 获取根目录
         let rootPath = NSHomeDirectory()
         // 创建文件完整路径
-        let filePath = rootPath + "archiver2.file"
+        let filePath = rootPath + "/archiver2.file"
         // 创建归档载体数据
         let data = NSMutableData()
         // 创建归档对象
@@ -248,7 +248,7 @@ class PlistViewController: UIViewController {
     // *****************
     func unarchiveMutableData() {
         let rootPath = NSHomeDirectory()
-        let filePath = rootPath + "archiver2.file"
+        let filePath = rootPath + "/archiver2.file"
         // 将文件读取成 Data 数据
         let data = try? Data(contentsOf: URL(fileURLWithPath: filePath))
         // 创建解归档对象
@@ -267,18 +267,21 @@ class PlistViewController: UIViewController {
     // ******************************
     func archiveObjectData() {
         let rootPath = NSHomeDirectory()
-        let filePath = rootPath + "archiver3.file"
+        let filePath = rootPath + "/archiver3.file"
        
         let instance = ArchiveData()
         instance.name = "William Yang"
         instance.age = 18
         
         // 归档
-        let data = try? NSKeyedArchiver.archivedData(withRootObject: instance, requiringSecureCoding: false)
-        // 写入文件
-        let result = try? data?.write(to: URL(fileURLWithPath: filePath))
-        
-        print("archive object data: \(result)")
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: instance, requiringSecureCoding: true)
+            try data.write(to: URL(fileURLWithPath: filePath))
+            
+            print("archive success")
+        } catch  {
+            print("archive failed：\(error)")
+        }
     }
     
     // ******************************
@@ -286,11 +289,17 @@ class PlistViewController: UIViewController {
     // ******************************
     func unarchiveObjectData() {
         let rootPath = NSHomeDirectory()
-        let filePath = rootPath + "archiver3.file"
+        let filePath = rootPath + "/archiver3.file"
         
         // 解归档
-        let demo = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? ArchiveData
-        print("unarchive object data: ", demo?.name, demo?.age)
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: filePath))
+            let some = try NSKeyedUnarchiver.unarchivedObject(ofClass: ArchiveData.self, from: data)
+            
+            print("unarchive success: ", some?.name, some?.age)
+        } catch {
+            print("unarchive failed: \(error)")
+        }
     }
     
     /*

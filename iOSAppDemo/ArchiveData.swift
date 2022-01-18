@@ -10,7 +10,12 @@ import Foundation
 // **************************
 // *** 要遵守 NSCoding 协议 ***
 // **************************
-class ArchiveData: NSObject, NSCoding {
+class ArchiveData: NSObject, NSSecureCoding {
+    
+    static var supportsSecureCoding: Bool {
+        return true
+    }
+    
     var name: String?
     var age: NSInteger = 0
     
@@ -21,7 +26,7 @@ class ArchiveData: NSObject, NSCoding {
     // 解归档
     required init?(coder aDecoder: NSCoder) {
         super.init()
-        self.name = aDecoder.decodeObject(forKey: "name") as! String?
+        self.name = aDecoder.decodeObject(forKey: "name") as? String ?? ""
         self.age = aDecoder.decodeInteger(forKey: "age")
     }
     
