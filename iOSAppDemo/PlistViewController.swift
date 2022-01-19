@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class PlistViewController: UIViewController {
 
@@ -300,6 +301,17 @@ class PlistViewController: UIViewController {
         } catch {
             print("unarchive failed: \(error)")
         }
+    }
+    
+    // 插入数据
+    func insertDataToCoreData() {
+        // 获取数据模型文件地址
+        let modelUrl = Bundle.main.url(forResource: "_0_CoreDataTest", withExtension: "momd")
+        // 创建数据模型管理实例
+        let store = NSManagedObjectModel(contentsOf: modelUrl!)
+        
+        
+        
     }
     
     /*

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AuthorEntity" representedClassName="AuthorEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BookEntity"/>
+    </entity>
+    <entity name="BookEntity" representedClassName="BookEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="issueTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="soldout" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="BookEntity" positionX="133.852294921875" positionY="321.7593994140625" width="128" height="43"/>
+        <element name="AuthorEntity" positionX="478.5413818359375" positionY="365.9301452636719" width="128" height="59"/>
+    </elements>
+</model>

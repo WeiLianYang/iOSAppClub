@@ -16,6 +16,7 @@
 		68317C072789864F00B016D5 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68317C062789864F00B016D5 /* CollectionViewController.swift */; };
 		686B19152789C56F00459A00 /* WaterFallFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686B19142789C56F00459A00 /* WaterFallFlowLayout.swift */; };
 		686DDC552781CFF90092C4F4 /* WKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DDC542781CFF90092C4F4 /* WKWebViewController.swift */; };
+		687E3ED0279844AC0082E93C /* iOSAppDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 687E3ECE279844AC0082E93C /* iOSAppDemo.xcdatamodeld */; };
 		68B77C8D2792ABD8007AA191 /* AutoLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B77C8C2792ABD8007AA191 /* AutoLayoutViewController.swift */; };
 		68C65D242780998700EA61DC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C65D232780998700EA61DC /* WebViewController.swift */; };
 		68CD99E42753A20500BF5EE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CD99E32753A20500BF5EE7 /* AppDelegate.swift */; };
@@ -63,9 +64,11 @@
 		6820201327943DD500700E1F /* PlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistViewController.swift; sourceTree = "<group>"; };
 		682020152794473100700E1F /* ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ext.swift; sourceTree = "<group>"; };
 		68202017279459F800700E1F /* CustomPlist.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CustomPlist.plist; sourceTree = "<group>"; };
+		682688422796FBC900A858FD /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		68317C062789864F00B016D5 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = SOURCE_ROOT; };
 		686B19142789C56F00459A00 /* WaterFallFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterFallFlowLayout.swift; sourceTree = SOURCE_ROOT; };
 		686DDC542781CFF90092C4F4 /* WKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewController.swift; sourceTree = SOURCE_ROOT; };
+		687E3ECF279844AC0082E93C /* iOSAppDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSAppDemo.xcdatamodel; sourceTree = "<group>"; };
 		68B77C8C2792ABD8007AA191 /* AutoLayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutViewController.swift; sourceTree = SOURCE_ROOT; };
 		68C65D232780998700EA61DC /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		68CD99E02753A20500BF5EE7 /* iOSAppDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAppDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +170,7 @@
 				682020152794473100700E1F /* ext.swift */,
 				68202017279459F800700E1F /* CustomPlist.plist */,
 				68133CE42795A56900B78C52 /* ArchiveData.swift */,
+				687E3ECE279844AC0082E93C /* iOSAppDemo.xcdatamodeld */,
 			);
 			path = iOSAppDemo;
 			sourceTree = "<group>";
@@ -191,6 +195,7 @@
 		F8772F8B75DB8AE89E900FAF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				682688422796FBC900A858FD /* libsqlite3.0.tbd */,
 				A1BBC7E22588C017BB961F22 /* Pods_iOSAppDemo.framework */,
 			);
 			name = Frameworks;
@@ -398,6 +403,7 @@
 				68CD99E62753A20500BF5EE7 /* SceneDelegate.swift in Sources */,
 				68C65D242780998700EA61DC /* WebViewController.swift in Sources */,
 				686B19152789C56F00459A00 /* WaterFallFlowLayout.swift in Sources */,
+				687E3ED0279844AC0082E93C /* iOSAppDemo.xcdatamodeld in Sources */,
 				68E1BF842779EDF2002A5ADA /* UILabelViewController.swift in Sources */,
 				68E1BF86277A0078002A5ADA /* LifecycleViewController.swift in Sources */,
 				681D09CD27872E5A0031F196 /* TableCellData.swift in Sources */,
@@ -766,6 +772,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		687E3ECE279844AC0082E93C /* iOSAppDemo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				687E3ECF279844AC0082E93C /* iOSAppDemo.xcdatamodel */,
+			);
+			currentVersion = 687E3ECF279844AC0082E93C /* iOSAppDemo.xcdatamodel */;
+			path = iOSAppDemo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 68CD99D82753A20500BF5EE7 /* Project object */;
 }
