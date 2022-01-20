@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class PlistViewController: UIViewController {
+class DataViewController: UIViewController {
 
     lazy var scrollView: UIScrollView = UIScrollView(frame: self.view.frame)
     
@@ -82,6 +82,8 @@ class PlistViewController: UIViewController {
         archiveMutableData()
         
         archiveObjectData()
+        
+        insertToCoreData()
     }
     
     @objc func readData() {
@@ -92,6 +94,8 @@ class PlistViewController: UIViewController {
         unarchiveMutableData()
         
         unarchiveObjectData()
+        
+        readFromCoreData()
     }
     
     func saveDataToUserDefaults() {
@@ -304,14 +308,69 @@ class PlistViewController: UIViewController {
     }
     
     // 插入数据
-    func insertDataToCoreData() {
+    func insertToCoreData() {
+        let context = getDBContext()
+        //获取管理的数据上下文 对象
+//        let app = UIApplication.shared.delegate as! AppDelegate
+//        let context = app.persistentContainer.viewContext
+        
+        // 创建作者数据
+        let author: AuthorEntity = NSEntityDescription.insertNewObject(forEntityName: "AuthorEntity", into: context) as! AuthorEntity
+        author.name = "WilliamYang"
+        
+        // 创建书籍数据
+        let book: BookEntity = NSEntityDescription.insertNewObject(forEntityName: "BookEntity", into: context) as! BookEntity
+        book.name = "Book A"
+        book.price = 25
+        book.soldout = false
+        book.issueTime = Date(timeIntervalSince1970: TimeInterval(1640880000))
+        
+        author.relationship = book
+        
+        // 存储数据
+        if ((try? context.save()) != nil) {
+            print("save data success")
+        } else {
+            print("save data failed")
+        }
+    }
+    
+    func getDBContext() -> NSManagedObjectContext {
         // 获取数据模型文件地址
-        let modelUrl = Bundle.main.url(forResource: "_0_CoreDataTest", withExtension: "momd")
+        let url = Bundle.main.url(forResource: "iOSAppDemo", withExtension: "momd")
         // 创建数据模型管理实例
-        let store = NSManagedObjectModel(contentsOf: modelUrl!)
+        let model = NSManagedObjectModel(contentsOf: url!)
+        // 创建存储管理实例
+        let store = NSPersistentStoreCoordinator(managedObjectModel: model!)
         
+        // 设置存储路径
+        let path = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! + "/demo.sqlite")
+        print("path: \(path)")
         
+        // 设置存储方式为 Sqlite 数据库
+        var _ = try? store.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: path, options: nil)
+        // 创建数据库操作上下文实例
+        let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        // 关联存储环境
+        context.persistentStoreCoordinator = store
         
+        return context
+    }
+    
+    func readFromCoreData() {
+//        let app = UIApplication.shared.delegate as! AppDelegate
+//        let context = app.persistentContainer.viewContext
+        
+        // 创建查询请求
+        let request = NSFetchRequest<AuthorEntity>(entityName: "AuthorEntity")
+        // 设置查询条件
+        request.predicate = NSPredicate(format: "name==\"WilliamYang\"")
+        // 执行查询
+        let result = try? getDBContext().execute(request) as? NSAsynchronousFetchResult<AuthorEntity>
+        let author = result?.finalResult?.first
+        let book = author?.relationship
+        
+        print(author?.name, book?.name, book?.price, book?.soldout, book?.issueTime)
     }
     
     /*

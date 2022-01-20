@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="2377" y="-682"/>
         </scene>
-        <!--Plist View Controller-->
+        <!--Data View Controller-->
         <scene sceneID="EsA-vh-Zm7">
             <objects>
-                <viewController id="pA5-3B-s8S" customClass="PlistViewController" customModule="iOSAppDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pA5-3B-s8S" customClass="DataViewController" customModule="iOSAppDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Yp-rj-PhR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
