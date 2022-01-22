@@ -23,8 +23,8 @@ struct SwiftUIView: View {
 
             TextLabel()
             
-            Image("snowflake")
-                .frame(width: 20, height: 20, alignment: .center)
+            Image("demo")
+                .frame(width: 200, height: 200, alignment: .center)
                 .clipShape(Circle())
                 .shadow(radius: 20)
 
