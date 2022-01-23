@@ -20,6 +20,8 @@
 		686F8DEC279AF2F70013BABE /* RowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686F8DEB279AF2F70013BABE /* RowItemView.swift */; };
 		686F8DEE279AF4A90013BABE /* shark.gif in Resources */ = {isa = PBXBuildFile; fileRef = 686F8DED279AF4A90013BABE /* shark.gif */; };
 		687E3ED0279844AC0082E93C /* iOSAppDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 687E3ECE279844AC0082E93C /* iOSAppDemo.xcdatamodeld */; };
+		68A8C779279C264200A55D47 /* DetailItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A8C778279C264200A55D47 /* DetailItemView.swift */; };
+		68A8C77B279C28E700A55D47 /* ListTelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A8C77A279C28E700A55D47 /* ListTelView.swift */; };
 		68B77C8D2792ABD8007AA191 /* AutoLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B77C8C2792ABD8007AA191 /* AutoLayoutViewController.swift */; };
 		68C65D242780998700EA61DC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C65D232780998700EA61DC /* WebViewController.swift */; };
 		68CD99E42753A20500BF5EE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CD99E32753A20500BF5EE7 /* AppDelegate.swift */; };
@@ -72,6 +74,8 @@
 		686F8DEB279AF2F70013BABE /* RowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowItemView.swift; sourceTree = "<group>"; };
 		686F8DED279AF4A90013BABE /* shark.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = shark.gif; path = ../../../../Downloads/shark.gif; sourceTree = "<group>"; };
 		687E3ECF279844AC0082E93C /* iOSAppDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSAppDemo.xcdatamodel; sourceTree = "<group>"; };
+		68A8C778279C264200A55D47 /* DetailItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemView.swift; sourceTree = "<group>"; };
+		68A8C77A279C28E700A55D47 /* ListTelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTelView.swift; sourceTree = "<group>"; };
 		68B77C8C2792ABD8007AA191 /* AutoLayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutViewController.swift; sourceTree = SOURCE_ROOT; };
 		68C65D232780998700EA61DC /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		68CD99E02753A20500BF5EE7 /* iOSAppDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAppDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +175,8 @@
 				687E3ECE279844AC0082E93C /* iOSAppDemo.xcdatamodeld */,
 				686F8DE7279AE7F30013BABE /* SwiftUIView.swift */,
 				686F8DEB279AF2F70013BABE /* RowItemView.swift */,
+				68A8C778279C264200A55D47 /* DetailItemView.swift */,
+				68A8C77A279C28E700A55D47 /* ListTelView.swift */,
 			);
 			path = iOSAppDemo;
 			sourceTree = "<group>";
@@ -391,7 +397,9 @@
 				68D359B9277C91050059257D /* TableViewController.swift in Sources */,
 				68B77C8D2792ABD8007AA191 /* AutoLayoutViewController.swift in Sources */,
 				68CD99E42753A20500BF5EE7 /* AppDelegate.swift in Sources */,
+				68A8C77B279C28E700A55D47 /* ListTelView.swift in Sources */,
 				6820201427943DD500700E1F /* DataViewController.swift in Sources */,
+				68A8C779279C264200A55D47 /* DetailItemView.swift in Sources */,
 				682020162794473100700E1F /* ext.swift in Sources */,
 				686F8DEC279AF2F70013BABE /* RowItemView.swift in Sources */,
 				68133CE52795A56900B78C52 /* ArchiveData.swift in Sources */,

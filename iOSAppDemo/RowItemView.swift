@@ -40,7 +40,7 @@ struct ItemData {
 func getDataList() -> [ItemData] {
     var array = Array<ItemData>()
     for index in 0...20 {
-        let data = ItemData(name: "name\(index)", tel: "188-8888-8888")
+        let data = ItemData(name: "Name-\(index)", tel: "188-8888-8888")
         array.append(data)
     }
     return array
