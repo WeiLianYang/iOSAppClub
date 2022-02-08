@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UISearchBarDelegate, CallbackProtocol {
+class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UISearchBarDelegate, CallbackProtocol {
     
     lazy var scrollView: UIScrollView = UIScrollView(frame: self.view.frame)
     
@@ -309,14 +309,60 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         textField.clearButtonMode = UITextField.ViewMode.whileEditing
         
         // 设置 UITextField 的代理为当前视图控制器
-//        textField.delegate = self as UITextViewDelegate
+        textField.delegate = self
         
         scrollView.addSubview(textField)
     }
     
-//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//
-//    }
+    // 输入框即将进入编辑状态时回调
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        // 是否允许输入框进入编辑状态
+        print("允许输入框进入编辑状态")
+        return true
+    }
+    
+    // 输入框已经开始编辑时回调
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("输入框已经开始编辑")
+    }
+    
+    // 输入框即将结束编辑时回调
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        // 是否允许结束编辑状态
+        print("输入框即将结束编辑")
+        return true
+    }
+    
+    // 输入框已经结束编辑时回调
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("输入框已经结束编辑时回调")
+    }
+    
+    // 输入框文本发生变化时回调
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print("输入框文本发生变化: ", String(describing: textField.text?.debugDescription), string)
+        return true
+    }
+    
+    // 输入框的清除按钮被点击时回调
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        print("输入框的清除按钮被点击")
+        // 返回 true 允许清除
+        return true
+    }
+    
+    // 键盘的 return 被点击时回调
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("键盘的 return 被点击")
+        // 收起键盘
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // 输入框的光标发生变化时回调
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        print("输入框的光标发生变化: ", String(describing: textField.text?.debugDescription))
+    }
     
     func addUISwitchView1() {
         // 创建开关控件
