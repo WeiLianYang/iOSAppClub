@@ -371,14 +371,10 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         si.center = CGPoint(x: 50, y: 620)
         // 设置 UISwitch 开启状态的颜色
         si.onTintColor = UIColor.green
-        // 设置 UISwitch 普通状态的边框颜色
-        si.tintColor = UIColor.red
         // 设置 UISwitch 滑块的颜色
         si.thumbTintColor = UIColor.white
         // 设置 UISwitch 初始状态
         si.isOn = true
-        // 设置 UISwitch 开关样式
-        si.preferredStyle = UISwitch.Style.automatic
         
         // 监听 UISwitch 开关状态变化
         si.addTarget(self, action: #selector(change), for: UIControl.Event.valueChanged)
@@ -397,14 +393,11 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         si.center = CGPoint(x: 120, y: 620)
         // 设置 UISwitch 开启状态的颜色
         si.onTintColor = UIColor.green
-        // 设置 UISwitch 普通状态的边框颜色
-        si.tintColor = UIColor.red
         // 设置 UISwitch 滑块的颜色
         si.thumbTintColor = UIColor.white
         // 设置 UISwitch 初始状态
         si.isOn = false
-        // 设置 UISwitch 开关样式
-        si.preferredStyle = UISwitch.Style.sliding
+       
         scrollView.addSubview(si)
     }
     
@@ -414,15 +407,12 @@ class ViewController: UIViewController, UITextViewDelegate, UIScrollViewDelegate
         // 设置位置
         si.center = CGPoint(x: 190, y: 620)
         // 设置 UISwitch 开启状态的颜色
-        si.onTintColor = UIColor.green
-        // 设置 UISwitch 普通状态的边框颜色
-        si.tintColor = UIColor.red
+        si.onTintColor = UIColor.red
         // 设置 UISwitch 滑块的颜色
-        si.thumbTintColor = UIColor.white
+        si.thumbTintColor = UIColor.green
         // 设置 UISwitch 初始状态
         si.isOn = true
-        // 设置 UISwitch 开关样式
-        si.preferredStyle = UISwitch.Style.checkbox
+   
         scrollView.addSubview(si)
     }
     
