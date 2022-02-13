@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		68133CE52795A56900B78C52 /* ArchiveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68133CE42795A56900B78C52 /* ArchiveData.swift */; };
+		6819878927B9491C002C7DD8 /* ios-app-demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6819878827B9491C002C7DD8 /* ios-app-demo.gif */; };
 		681D09CD27872E5A0031F196 /* TableCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681D09CC27872E5A0031F196 /* TableCellData.swift */; };
 		682020122794122C00700E1F /* HttpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682020112794122C00700E1F /* HttpViewController.swift */; };
 		6820201427943DD500700E1F /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6820201327943DD500700E1F /* DataViewController.swift */; };
@@ -61,6 +62,7 @@
 		0D2476AC9918C3DFBA5A7B46 /* Pods-iOSAppDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSAppDemo.debug.xcconfig"; path = "Target Support Files/Pods-iOSAppDemo/Pods-iOSAppDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		2372C06080BFE3238A67C486 /* Pods-iOSAppDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSAppDemo.release.xcconfig"; path = "Target Support Files/Pods-iOSAppDemo/Pods-iOSAppDemo.release.xcconfig"; sourceTree = "<group>"; };
 		68133CE42795A56900B78C52 /* ArchiveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveData.swift; sourceTree = "<group>"; };
+		6819878827B9491C002C7DD8 /* ios-app-demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "ios-app-demo.gif"; sourceTree = "<group>"; };
 		681D09CC27872E5A0031F196 /* TableCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellData.swift; sourceTree = SOURCE_ROOT; };
 		682020112794122C00700E1F /* HttpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpViewController.swift; sourceTree = SOURCE_ROOT; };
 		6820201327943DD500700E1F /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				6820201327943DD500700E1F /* DataViewController.swift */,
 				682020152794473100700E1F /* ext.swift */,
 				686F8DED279AF4A90013BABE /* shark.gif */,
+				6819878827B9491C002C7DD8 /* ios-app-demo.gif */,
 				68202017279459F800700E1F /* CustomPlist.plist */,
 				68133CE42795A56900B78C52 /* ArchiveData.swift */,
 				687E3ECE279844AC0082E93C /* iOSAppDemo.xcdatamodeld */,
@@ -323,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68CD99F02753A20700BF5EE7 /* LaunchScreen.storyboard in Resources */,
+				6819878927B9491C002C7DD8 /* ios-app-demo.gif in Resources */,
 				68CD99ED2753A20700BF5EE7 /* Assets.xcassets in Resources */,
 				68202018279459F800700E1F /* CustomPlist.plist in Resources */,
 				68CD99EB2753A20500BF5EE7 /* Main.storyboard in Resources */,
